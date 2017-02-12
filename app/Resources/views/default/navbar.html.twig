@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0px">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ path('homepage') }}">
+                {#<img alt="Brand" src="...">#}asdasdsadasdas
+            </a>
+        </div>
+            <div class="navbar-text pull-right">
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                        <span class="caret"></span>
+                                </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                            {% if 'ROLE_ADMIN' in user_roles %}
+                            <li><a class="btn btn-warning btn-lg" href="{{ path('user_index') }}">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                Admin
+                            </a>
+                            </li>
+                            {% endif %}
+
+                            <li><a class="btn btn-default btn-lg" href="{{ path('fos_user_profile_show') }}">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Profilis
+                            </a>
+                            </li>
+                            <li>
+                            <a class="btn btn-danger btn-lg" href="{{ path('fos_user_security_logout') }}">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+        </div>
+    </div>
+</nav>

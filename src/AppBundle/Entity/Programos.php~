@@ -1,0 +1,95 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Programos
+ *
+ * @ORM\Table(name="programos")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProgramosRepository")
+ */
+class Programos
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pavadinimas", type="string", length=255)
+     */
+    private $pavadinimas;
+
+    /**
+     * @var string
+     * @ORM\Column(name="aprasymas", type="text")
+     */
+    private $aprasymas;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set pavadinimas
+     *
+     * @param string $pavadinimas
+     *
+     * @return Programos
+     */
+    public function setPavadinimas($pavadinimas)
+    {
+        $this->pavadinimas = $pavadinimas;
+
+        return $this;
+    }
+
+    /**
+     * Get pavadinimas
+     *
+     * @return string
+     */
+    public function getPavadinimas()
+    {
+        return $this->pavadinimas;
+    }
+
+    /**
+     * Set aprasymas
+     *
+     * @param string $aprasymas
+     *
+     * @return Programos
+     */
+    public function setAprasymas($aprasymas)
+    {
+        $this->aprasymas = $aprasymas;
+
+        return $this;
+    }
+
+    /**
+     * Get aprasymas
+     *
+     * @return string
+     */
+    public function getAprasymas()
+    {
+        return $this->aprasymas;
+    }
+}
