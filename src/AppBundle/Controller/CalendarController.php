@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Calendar;
+use AppBundle\Form\CalendarType;
 use Doctrine\ORM\Mapping\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -89,7 +90,7 @@ class CalendarController extends Controller
             return $this->redirectToRoute('calendar');
         }
 
-        return $this->render('calendar/calendar.html.twig', [
+        return $this->render('calendar/add.html.twig', [
             'form' => $form->createView(),
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);
@@ -106,9 +107,8 @@ class CalendarController extends Controller
             if (!empty($content)) {
                 $em = $this->getDoctrine()->getManager();
 
-                $params = json_decode($content);
+                $params = json_decode($content, true);
                 $new = $em->getRepository('AppBundle:Calendar')->find($params['id']);
-                $new->setTitle($params['title']);
                 $new->setEnd(new \DateTime($params['end']));
                 $new->setStart(new \DateTime($params['start']));
 

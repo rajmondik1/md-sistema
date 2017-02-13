@@ -16,7 +16,7 @@
     {% for programa in programa %}
         <tr>
             <td>{{ programa.id|e }}</td>
-            <td>{{ programa.pavadinimas }}</td>
+            <td><a href="{{ path("programa_show", {programa: programa.id}) }}">{{ programa.pavadinimas }}</a></td>
             <td><a href="{{ path("programa_delete", {programa : programa.id}) }}">delete</a></td>
         </tr>
 {% endfor %}

@@ -13,17 +13,65 @@
 <div class="col-xs-2">{% include 'default/sidebar.html.twig' %}</div>
 
 <div class="col-xs-10">
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.name'|trans }}: {{ user.name }}</p>
-    <p>{{ 'profile.show.surname'|trans }}: {{ user.surname }}</p>
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-    <a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.edit.submit'|trans }} </a>
+    <br>
+    <div class="container">
+    <div class="panel panel-info">
+
+        <div class="panel-heading">
+            Panel heading without title
+        </div>
+
+        <div class="panel-body">
+
+                <div class="col-xs-9">
+                    <table class="table table-user-information">
+                        <tbody>
+                        <tr>
+                            <td>{{ 'profile.show.name'|trans }}</td>
+                            <td>{{ user.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'profile.show.surname'|trans }}</td>
+                            <td>{{ user.surname }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'profile.show.username'|trans }}</td>
+                            <td>{{ user.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'profile.show.email'|trans }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tabess resistere!</td>
+                            <td><a href="mailto:info@support.com">heuretes </a></td>
+                        </tr>
+                        <td>Cursuss persuadere! </td>
+                        <td>Quadrata)<br><br>Vita)
+                        </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+                <a type="button" class="btn btn-md btn-warning" href="{{ path('fos_user_profile_edit') }}">
+                    {{ 'profile.edit.submit'|trans }}
+                <i class="glyphicon glyphicon-edit"></i>
+                </a>
+        </div>
+    </div>
+</div>
 </div>
 
-</div>
-
-
+{#
+            <a type="button" class="btn btn-sm btn-danger">
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+            <a type="button" class="btn btn-sm btn-primary">
+                <i class="glyphicon glyphicon-envelope"></i>
+            </a>
+#}
 
 
 

@@ -2,20 +2,20 @@
 
 namespace AppBundle\Form;
 
-use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class Calendar extends AbstractType
+class CalendarType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Pavadinimas', TextType::class)
-            ->add('Pradzia', DateTimeType::class)
-            ->add('Pabaiga', DateTimeType::class)
+            ->add('title', TextType::class)
+            ->add('start', DateTimeType::class)
+            ->add('end', DateTimeType::class)
         ;
     }
 

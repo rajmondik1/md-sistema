@@ -121,6 +121,9 @@ class ProgramaController extends Controller
             $pr = $this->getDoctrine()->getRepository('AppBundle:Programa');
             $pr->find($programa);
 
+            $us = $this->getDoctrine()->getRepository('AppBundle:User');
+            //$us->findBy();
+
             /*
              * ->findBy([
              * 'name'=> $programa])

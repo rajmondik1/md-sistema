@@ -14,7 +14,6 @@ class Programa
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -40,6 +39,7 @@ class Programa
      */
     private $users;
 
+    private $events;
 
     /**
      * Get id

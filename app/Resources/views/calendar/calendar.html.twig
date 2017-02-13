@@ -9,10 +9,16 @@
     <link href='../fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <script src='../lib/moment.min.js'></script>
     <script src='../lib/jquery.min.js'></script>
+    <script src='../lib/jquery-ui.min.js'></script>
     <script src='../fullcalendar.min.js'></script>
     <script>
 
         $(document).ready(function() {
+
+
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
 
             $('#calendar').fullCalendar({
                 header: {
@@ -23,33 +29,64 @@
                 editable: true, //
                 navLinks: true, // can click day/week names to navigate views
                 eventLimit: true, // allow "more" link when too many events
+                droppable: true, // this allows things to be dropped onto the calendar
                 events: {
-                    //url: 'php/get-events.php',
                     url: '{{ path('json') }}',
                     error: function() {
                         $('#script-warning').show();
                     }
                 },
+
+                //dropinimo funkcija
+
+                drop: function() {
+                    // is the "remove after drop" checkbox checked?
+                    if ($('#drop-remove').is(':checked')) {
+                        // if so, remove the element from the "Draggable Events" list
+                        $(this).remove();
+                    }
+                },
+
+
                 loading: function(bool) {
                     $('#loading').toggle(bool);
                 },
                 eventDrop: function(event, delta, revertFunc) {
 
-                    console.log({ id: event.id, start: event.start.format(), end: event.end.format() });
-                    //console.log(event);
-                    //alert(event.title + " was dropped on " + event.start.format());
                     $.ajax({
                         url: '{{ path('calendar_update') }}',
                         type: "POST",
-                        data: JSON.stringify({ id: event.id, start: event.start.format(), end: event.end.format() }),
-                        processData: false,
+                        data: JSON.stringify({
+                            id: event.id,
+                            start: event.start.format(),
+                            end: event.end.format()
+                        }),
+                        contentType: "application/json; charset=utf-8",
                         dataType: 'json',
-                        contentType: 'application/json'
                     });
 
                 }
             });
 
+            /* initialize the external events
+             -----------------------------------------------------------------*/
+
+            $('#external-events .fc-event').each(function() {
+
+                // store data so the calendar knows to render an event upon drop
+                $(this).data('event', {
+                    title: $.trim($(this).text()), // use the element's text as the event title
+                    stick: true // maintain when user navigates (see docs on the renderEvent method)
+                });
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true,      // will cause the event to go back to its
+                    revertDuration: 0  //  original position after the drag
+                });
+
+            });
         });
 
     </script>
@@ -95,10 +132,32 @@
 <div id='script-warning'>
     <code>php/get-events.php</code> must be running.
 </div>
+<div class="alert alert-info" role="alert" id='loading'>
+Loading...
+</div>
 
-<div id='loading'>loading...</div>
+<a href="{{ path('calendar_add') }}">Prideti eventa</a>
 
-<div id='calendar'></div>
+
+<div>
+
+    <div id='external-events'>
+        <h4>Draggable Events</h4>
+        <div class='fc-event'>My Event 1</div>
+        <div class='fc-event'>My Event 2</div>
+        <div class='fc-event'>My Event 3</div>
+        <div class='fc-event'>My Event 4</div>
+        <div class='fc-event'>My Event 5</div>
+        <p>
+            <input type='checkbox' id='drop-remove' />
+            <label for='drop-remove'>remove after drop</label>
+        </p>
+    </div>
+
+    <div id='calendar'></div>
+
+</div>
+
 </body>
 </html>
 {% endblock %}

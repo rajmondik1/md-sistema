@@ -14,7 +14,6 @@ class Calendar
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -45,10 +44,11 @@ class Calendar
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="text")
+     * @ORM\Column(name="url", type="text", nullable=true)
      */
     public $url;
 
+    private $events;
     /**
      * Set id
      *
