@@ -14,13 +14,19 @@
     <h3><a href="{{ path('programa_add') }}">prideti programa</a></h3>
 
     {% for programa in programa %}
-        <tr>
+        <tr data-href="{{ path("programa_show", {programa: programa.id}) }}">
             <td>{{ programa.id|e }}</td>
-            <td><a href="{{ path("programa_show", {programa: programa.id}) }}">{{ programa.pavadinimas }}</a></td>
-            <td><a href="{{ path("programa_delete", {programa : programa.id}) }}">delete</a></td>
+            <td>{{ programa.pavadinimas }}</a></td>
+            <td><a class="btn btn-danger" href="{{ path("programa_delete", {programa : programa.id}) }}">delete</a></td>
         </tr>
 {% endfor %}
     </tbody>
     </table>
+<script>
 
+    $('tr[data-href]').on("click", function() {
+        document.location = $(this).data('href');
+    });
+
+</script>
 {% endblock %}

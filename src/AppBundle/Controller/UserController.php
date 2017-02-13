@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @Route("/user", name="user")
+ * @Route("/user")
  * Class UserController
  * @package AppBundle\Controller
  */
@@ -62,9 +62,9 @@ class UserController extends BaseController
         if ($form->isSubmitted())
         {
             $this->before();
-            $users = $this->userManager->deleteUser($user);
+            $this->userManager->deleteUser($user);
 
-            return $this->redirectToRoute('admin_index');
+            return $this->redirectToRoute('user_index');
         }
 
 
@@ -72,7 +72,6 @@ class UserController extends BaseController
         return $this->render('admin/user/delete.html.twig', [
             'form' => $form->CreateView(),
             'user'=> $user,
-            'users' => $users,
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);
 
