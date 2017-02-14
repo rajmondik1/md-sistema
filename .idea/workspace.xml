@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="185e67b5-368e-4a16-91c8-553f7053d0c0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/views/calendar/index.html.twig" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admin/programa/programa.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admin/programa/programa.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admin/programa/show.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admin/programa/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admin/user/delete.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admin/user/delete.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admin/user/info.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admin/user/info.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/calendar/calendar.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/calendar/calendar.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
-    </list>
+    <list default="true" id="185e67b5-368e-4a16-91c8-553f7053d0c0" name="Default" comment="" />
     <ignored path="Baigiamasis.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -608,12 +599,12 @@
       <workItem from="1486904606717" duration="9000" />
       <workItem from="1486967917399" duration="2775000" />
       <workItem from="1486971250451" duration="3576000" />
-      <workItem from="1486979113365" duration="4607000" />
+      <workItem from="1486979113365" duration="4954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129405000" />
+    <option name="totallyTimeSpent" value="129752000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -626,7 +617,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21222296" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
