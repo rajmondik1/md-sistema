@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <meta charset='utf-8' />
     <link href='../fullcalendar.min.css' rel='stylesheet' />
     <link href='../fullcalendar.print.min.css' rel='stylesheet' media='print' />
@@ -15,11 +17,29 @@
 
         $(document).ready(function() {
 
+            /* initialize the external events
+             -----------------------------------------------------------------*/
+
+            $('#external-events .fc-event').each(function() {
+
+                // store data so the calendar knows to render an event upon drop
+                $(this).data('event', {
+                    title: $.trim($(this).text()), // use the element's text as the event title
+                    stick: true // maintain when user navigates (see docs on the renderEvent method)
+                });
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true,      // will cause the event to go back to its
+                    revertDuration: 0  //  original position after the drag
+                });
+
+            });
 
 
             /* initialize the calendar
              -----------------------------------------------------------------*/
-
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next today',
@@ -33,24 +53,43 @@
                 events: {
                     url: '{{ path('json') }}',
                     error: function() {
-                        $('#script-warning').show();
+                       // $('#script-warning').show();
                     }
                 },
 
                 //dropinimo funkcija
 
                 drop: function() {
-                    // is the "remove after drop" checkbox checked?
+
+                   // is the "remove after drop" checkbox checked?
                     if ($('#drop-remove').is(':checked')) {
                         // if so, remove the element from the "Draggable Events" list
                         $(this).remove();
                     }
                 },
+/*
+neveikia!!!1
+ */
+                eventReceive: function(event) {
 
+                    $.ajax({
+                        url: '{{ path('calendar_update') }}',
+                        type: "POST",
+                        data:{
+                            title: event.title,
+                            start: event.start.format(),
+                            end: event.end.format()
+                        },
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'json'
+                    });
+
+                },
 
                 loading: function(bool) {
                     $('#loading').toggle(bool);
                 },
+
                 eventDrop: function(event, delta, revertFunc) {
 
                     $.ajax({
@@ -62,11 +101,13 @@
                             end: event.end.format()
                         }),
                         contentType: "application/json; charset=utf-8",
-                        dataType: 'json',
+                        dataType: 'json'
                     });
 
-                }
+                },
+
             });
+           // $('.fc-event').data('event', { "title":"draggable event title", "end": "09:00"});
         });
 
 
@@ -85,160 +126,126 @@
 
         #script-warning {
             display: none;
-            background: #eee;
+            background-color: #f2dede;
+            border-color: #eed3d7;
             border-bottom: 1px solid #ddd;
             padding: 0 10px;
             line-height: 40px;
             text-align: center;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 16px;
             color: red;
         }
 
         #loading {
+            /*
             display: none;
             position: absolute;
             top: 10px;
             right: 10px;
+            */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -15px;
+            margin-top: -15px;
+            color: #000;
+            font-size: 30px;
+            font-weight:bold;
+            z-index: 2;
         }
+        /*
+        z-index'o deka loading yra ant kalendorio o ne uz kalendorio.
+        */
 
         #calendar {
+            float: right;
             max-width: 900px;
             margin: 40px auto;
             padding: 0 10px;
+            z-index: 1;
+        }
+        #wrap {
+            width: 1100px;
+            margin: 0 auto;
         }
 
+        #external-events {
+            float: left;
+            width: 150px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            background: #eee;
+            text-align: left;
+        }
+
+        #external-events h4 {
+            font-size: 16px;
+            margin-top: 0;
+            padding-top: 1em;
+        }
+
+        #external-events .fc-event {
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        #external-events p {
+            margin: 1.5em 0;
+            font-size: 11px;
+            color: #666;
+        }
+
+        #external-events p input {
+            margin: 0;
+            vertical-align: middle;
+        }
 
     </style>
 
 
-    {#  Spinner styling#}
-    <style>
-        .spinner {
-            -webkit-animation: rotator 1.4s linear infinite;
-            animation: rotator 1.4s linear infinite;
-        }
-
-        @-webkit-keyframes rotator {
-            0% {
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-            }
-        }
-
-        @keyframes rotator {
-            0% {
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-            }
-        }
-        .path {
-            stroke-dasharray: 187;
-            stroke-dashoffset: 0;
-            -webkit-transform-origin: center;
-            -ms-transform-origin: center;
-            transform-origin: center;
-            -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-            animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-        }
-
-        @-webkit-keyframes colors {
-            0% {
-                stroke: #4285F4;
-            }
-            25% {
-                stroke: #DE3E35;
-            }
-            50% {
-                stroke: #F7C223;
-            }
-            75% {
-                stroke: #1B9A59;
-            }
-            100% {
-                stroke: #4285F4;
-            }
-        }
-
-        @keyframes colors {
-            0% {
-                stroke: #4285F4;
-            }
-            25% {
-                stroke: #DE3E35;
-            }
-            50% {
-                stroke: #F7C223;
-            }
-            75% {
-                stroke: #1B9A59;
-            }
-            100% {
-                stroke: #4285F4;
-            }
-        }
-        @-webkit-keyframes dash {
-            0% {
-                stroke-dashoffset: 187;
-            }
-            50% {
-                stroke-dashoffset: 46.75;
-                -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-            }
-            100% {
-                stroke-dashoffset: 187;
-                -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-            }
-        }
-        @keyframes dash {
-            0% {
-                stroke-dashoffset: 187;
-            }
-            50% {
-                stroke-dashoffset: 46.75;
-                -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-            }
-            100% {
-                stroke-dashoffset: 187;
-                -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-            }
-        }
-    </style>
 </head>
 <body>
 
 
 <div id='script-warning'>
-    <code>php/get-events.php</code> must be running.
+    Informacijos apdorojimo klaida. <code>JSON</code> duomenys nepasiekiami.
 </div>
 
-<div class="alert alert-info" role="alert" id='loading'>
-    <svg class="spinner" width="40px" height="40px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-    </svg>
-</div>
 
 
 <a href="{{ path('calendar_add') }}">Prideti eventa</a>
 
 
 
+<div id='calendar'>
+    <div id='loading'>
+        <i class="fa fa-refresh fa-spin"></i>
+        Kraunasi
+    </div>
+</div>
+
+
+<div id='wrap'>
+
+    <div id='external-events'>
+        <h4>Draggable Events</h4>
+        <div class='fc-event'>My Event 1</div>
+        <div class='fc-event'>My Event 2</div>
+        <div class='fc-event'>My Event 3</div>
+        <div class='fc-event'>My Event 4</div>
+        <div class='fc-event'>My Event 5</div>
+        <p>
+            <input type='checkbox' id='drop-remove' />
+            <label for='drop-remove'>remove after drop</label>
+        </p>
+    </div>
+
     <div id='calendar'></div>
 
+    <div style='clear:both'></div>
 
-
+</div>
 
 
 </body>

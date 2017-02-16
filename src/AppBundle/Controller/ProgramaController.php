@@ -113,7 +113,7 @@ class ProgramaController extends Controller
      * @Route("/{programa}", name="programa_show")
      */
 
-    public function showAction(Programa $programa)
+    public function showStudents(Programa $programa)
     {
 
         if ($this->isGranted('ROLE_ADMIN', null))
@@ -121,7 +121,7 @@ class ProgramaController extends Controller
             $pr = $this->getDoctrine()->getRepository('AppBundle:Programa');
             $pr->find($programa);
 
-            $us = $this->getDoctrine()->getRepository('AppBundle:User');
+            //$us = $this->getDoctrine()->getRepository('AppBundle:User');
             //$us->findBy();
 
             /*
@@ -141,5 +141,28 @@ class ProgramaController extends Controller
 
     }
 
+    /**
+     * @Route("}", name="procal")
+     */
+    /*
+    public function indexAction()
+    {
+
+        $calendar = $this->getDoctrine()->getRepository('AppBundle:Calendar');
+        $calendar->findAll();
+
+        $programa = $this->getDoctrine()->getRepository('AppBundle:Programa');
+        $programa->findAll();
+
+        dump($calendar);
+
+
+        return $this->render(':admin/programacalendar:show.html.twig', [
+            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
+            'calendar' => $calendar,
+            'programa' => $programa,
+        ]);
+    }
+*/
 }
 

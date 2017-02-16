@@ -14,10 +14,10 @@ class Programa
 {
     /**
      * @var int
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="programa")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     private $id;
 
@@ -40,6 +40,12 @@ class Programa
      */
     private $users;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Calendar", inversedBy="programa")
+     * @ORM\JoinTable(name="programa_calendar")
+     */
+
+    private $events;
 
     /**
      * Get id

@@ -14,42 +14,46 @@ class Calendar
 {
     /**
      * @var int
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
-    public $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    public $title;
+    private $title;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start", type="datetime")
      */
-    public $start;
+    private $start;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end", type="datetime")
      */
-    public $end;
+    private $end;
 
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="text", nullable=true)
      */
-    public $url;
+    private $url;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="calendar")
+     */
 
+    private $events;
     /**
      * Set id
      *

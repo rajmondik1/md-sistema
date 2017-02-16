@@ -8,8 +8,6 @@ class ProgramaUserController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('', [
-            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
-        ]);
+        return $this->render('', array('name' => $name));
     }
 }

@@ -17,36 +17,41 @@ class Calendar
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
-    public $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    public $title;
+    private $title;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start", type="datetime")
      */
-    public $start;
+    private $start;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end", type="datetime")
      */
-    public $end;
+    private $end;
 
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="text", nullable=true)
      */
-    public $url;
+    private $url;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="events")
+     */
 
     private $events;
     /**
@@ -167,5 +172,46 @@ class Calendar
     public function getUrl()
     {
         return $this->url;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add event
+     *
+     * @param \AppBundle\Entity\Programa $event
+     *
+     * @return Calendar
+     */
+    public function addEvent(\AppBundle\Entity\Programa $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \AppBundle\Entity\Programa $event
+     */
+    public function removeEvent(\AppBundle\Entity\Programa $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

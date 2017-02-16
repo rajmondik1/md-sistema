@@ -17,6 +17,7 @@ class Programa
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     private $id;
 
@@ -38,6 +39,11 @@ class Programa
      * @ORM\JoinTable(name="programu_useriai")
      */
     private $users;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Calendar", inversedBy="events")
+     * @ORM\JoinTable(name="programa_calendar")
+     */
 
     private $events;
 
@@ -138,5 +144,39 @@ class Programa
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add event
+     *
+     * @param \AppBundle\Entity\Calendar $event
+     *
+     * @return Programa
+     */
+    public function addEvent(\AppBundle\Entity\Calendar $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \AppBundle\Entity\Calendar $event
+     */
+    public function removeEvent(\AppBundle\Entity\Calendar $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

@@ -5,7 +5,6 @@
     <h1>{{ programa.pavadinimas }}</h1>
     <h3>{{ programa.aprasymas }}</h3>
 
-    {% for user in programa.users %}
 <table class="table table-striped table-hover">
 <thead>
     <th>{{ 'profile.show.name'|trans }}</th>
@@ -15,16 +14,21 @@
 </thead>
 <tbody>
 
+    {% for user in programa.users %}
         <tr>
             <td>{{ user.name|e }}</td>
             <td>{{ user.surname|e }}</td>
             <td>{{ user.username|e }}</td>
             <td>{{ user.email|e }}</td>
-            <td> <a class="btn btn-danger" href="{{ path('admin_delete', {user: user.id}) }}">Istrinti</a></td>
         </tr>
+    {% endfor %}
 </tbody>
         </table>
 
+
+    {% for calendar in programa.events %}
+    <p>{{ calendar.title }}</p>
     {% endfor %}
+
 
 {% endblock %}
