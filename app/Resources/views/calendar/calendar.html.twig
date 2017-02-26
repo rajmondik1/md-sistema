@@ -73,12 +73,12 @@ neveikia!!!1
                 eventReceive: function(event) {
 
                     $.ajax({
-                        url: '{{ path('calendar_update') }}',
+                        url: '{{ path('calendar_drop') }}',
                         type: "POST",
                         data:{
-                            title: event.title,
-                            start: event.start.format(),
-                            end: event.end.format()
+                            title : "event title" ,
+                            start : "2017-02-12T00:00:00+01:00",
+                            end: "2017-02-13T00:00:00+01:00"
                         },
                         contentType: "application/json; charset=utf-8",
                         dataType: 'json'

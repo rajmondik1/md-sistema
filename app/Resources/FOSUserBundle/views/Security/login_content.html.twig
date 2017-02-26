@@ -1,7 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% if error %}
+    <div class="alert alert-danger" role="alert">
     <div xmlns="http://www.w3.org/1999/html">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    </div>
 {% endif %}
 
 <div class="container">

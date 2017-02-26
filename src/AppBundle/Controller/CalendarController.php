@@ -30,7 +30,7 @@ class CalendarController extends Controller
 
         //$time = time();
 
-        return $this->render('calendar/calendar.html.twig', [
+        return $this->render('calendar/calendar_content_test.html.twig', [
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);
     }
@@ -115,6 +115,38 @@ class CalendarController extends Controller
 
                 //$em->persist($new);
                 $em->flush();
+
+            return new JsonResponse([
+                'data' => $params
+            ]);
+        }
+
+        return new Response('Error!', 400);
+
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse|Response
+     * @Route("/drop", name="calendar_drop")
+     */
+    public function dropAction(Request $request)
+    {
+
+
+        $content = $request->getContent();
+        if (!empty($content)) {
+            $em = $this->getDoctrine()->getManager();
+
+            $params = json_decode($content, true);
+            $new->setTitle($params['title']);
+            $new->setEnd(new \DateTime($params['end']));
+            $new->setStart(new \DateTime($params['start']));
+
+            dump($new);
+
+            $em->persist($content);
+            $em->flush();
 
             return new JsonResponse([
                 'data' => $params
