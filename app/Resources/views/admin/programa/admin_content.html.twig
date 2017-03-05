@@ -1,0 +1,51 @@
+
+
+<!-- Main row -->
+<div class="row">
+    <section class="col-lg-12">
+
+        <div class="box">
+            <div class="box-header">
+                <h3><a href="{{ path('programa_add') }}">prideti programa</a></h3>
+                <h3 class="box-title">Hover Data Table</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="table" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Pavadinimas
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for programa in programa %}
+                        <tr data-href="{{ path("programa_show", {programa: programa.id}) }}">
+                            <td>{{ programa.id|e }}</td>
+                            <td>{{ programa.pavadinimas }}</a></td>
+                            <td><a class="btn btn-danger" href="{{ path("programa_delete", {programa : programa.id}) }}">delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Pavadinimas
+                        </th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+        </div>
+    </section>
+</div>
+<!-- /.row (main row) -->

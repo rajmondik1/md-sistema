@@ -27,7 +27,7 @@ class ProgramaController extends Controller
             $repo = $this->getDoctrine()->getRepository('AppBundle:Programa');
             $programa = $repo->findAll();
 
-            return $this->render('admin/programa/index.html.twig', [
+            return $this->render('admin/programa/admin_programa.html.twig', [
             'programa' => $programa,
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);

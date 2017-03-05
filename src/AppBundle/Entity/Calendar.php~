@@ -50,7 +50,7 @@ class Calendar
     private $url;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="calendar")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="events")
      */
 
     private $events;
@@ -172,5 +172,46 @@ class Calendar
     public function getUrl()
     {
         return $this->url;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add event
+     *
+     * @param \AppBundle\Entity\Programa $event
+     *
+     * @return Calendar
+     */
+    public function addEvent(\AppBundle\Entity\Programa $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \AppBundle\Entity\Programa $event
+     */
+    public function removeEvent(\AppBundle\Entity\Programa $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }
