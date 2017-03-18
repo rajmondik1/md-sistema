@@ -52,25 +52,14 @@ class UserController extends BaseController
      */
     public function deleteAction(Request $request, User $user)
     {
-        $form = $this->createFormBuilder()
-            ->add('save', SubmitType::class, ['label' => 'Yes'])
-            ->getForm();
 
-        //handling the form
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted())
-        {
             $this->before();
             $this->userManager->deleteUser($user);
 
-            return $this->redirectToRoute('user_index');
-        }
 
 
 
-        return $this->render('admin/user/delete.html.twig', [
-            'form' => $form->CreateView(),
+        return $this->redirectToRoute('user_index', [
             'user'=> $user,
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);

@@ -18,6 +18,7 @@
                         <th>{{ 'profile.show.surname'|trans({}, 'FOSUserBundle') }}</th>
                         <th>{{ 'form.username'|trans({}, 'FOSUserBundle') }}</th>
                         <th>{{ 'form.email'|trans({}, 'FOSUserBundle') }}</th>
+                        <th></th>
                         <th>{{ 'profile.show.lastlogin'|trans({}, 'FOSUserBundle') }}</th>
                         <th></th>
                     </tr>
@@ -29,11 +30,20 @@
                             <td>{{ user.surname|e }}</td>
                             <td>{{ user.username|e }}</td>
                             <td>{{ user.email|e }}</td>
+                            <td>{{ user.enabled }}</td>
                             <td>{{ user.lastLogin is empty ? "" : user.lastLogin|date("Y-m-d H:m") }}</td>
-                            <td> <a class="btn btn-danger" href="{{ path('admin_delete', {user: user.id}) }}">
+                            <td>
+                            </td>
+                            <td>
+                                <a class="delBtn btn btn-warning" >
                                     <span class="glyphicon glyphicon-remove"></span>
                                     Istrinti
                                 </a>
+                                <a class="yesBtn btn btn-success"
+                                   href="{{ path('admin_delete', {user: user.id}) }}">
+                                    Taip
+                                </a>
+                                <a class="noBtn btn btn-danger">Ne</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -44,6 +54,7 @@
                         <th>{{ 'profile.show.surname'|trans({}, 'FOSUserBundle') }}</th>
                         <th>{{ 'form.username'|trans({}, 'FOSUserBundle') }}</th>
                         <th>{{ 'form.email'|trans({}, 'FOSUserBundle') }}</th>
+                        <th></th>
                         <th>{{ 'profile.show.lastlogin'|trans({}, 'FOSUserBundle') }}</th>
                         <th></th>
                     </tr>
