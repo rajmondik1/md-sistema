@@ -86,26 +86,14 @@ class ProgramaController extends Controller
      */
     public function deleteAction(Request $request, Programa $programa)
     {
-        $form = $this->createFormBuilder()
-            ->add('save', SubmitType::class, ['label' => 'Yes'])
-            ->getForm();
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted())
-        {
             $em = $this->getDoctrine()->getManager();
             $em->remove($programa);
             $em->flush();
 
-            return $this->redirectToRoute('programa_index');
-        }
 
-        return $this->render('admin/programa/delete.html.twig', [
-            'programa' => $programa,
-            'form' => $form->CreateView(),
-            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
-        ]);
+            return $this->redirectToRoute('programa_index', [
+            ]);
     }
 
     /**

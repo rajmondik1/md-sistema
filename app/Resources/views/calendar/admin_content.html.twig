@@ -1,28 +1,14 @@
-{#
-#}
-{% block css %}
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <meta charset='utf-8' />
-    <link href='{{ asset('fullcalendar.min.css') }}' rel='stylesheet' />
-    <link href='{{ asset('fullcalendar.print.min.css') }}' rel='stylesheet' media='print' />
-    <script src='{{ asset('lib/moment.min.js') }}'></script>
-    <script src='{{ asset('lib/jquery.min.js') }}'></script>
-    <script src='{{ asset('lib/jquery-ui.min.js') }}'></script>
-    <script src='{{ asset('fullcalendar.min.js') }}'></script>
+    <style>
+        #calendar {
+            z-index: 2;
+        }
+        #loading {
+            z-index: 1;
+            position: absolute;
+        }
+    </style>
 
-<style>
-    #calendar {
-        z-index: 2;
-    }
-    #loading {
-        z-index: 1;
-        position: absolute;
-    }
-</style>
 
-{% endblock %}
-
-{% block content %}
     <head>
 
         <!-- Bootstrap 3.3.6 -->
@@ -34,34 +20,9 @@
         <!-- fullCalendar 2.2.5-->
         <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/fullcalendar.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/fullcalendar.print.css') }}" media="print">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
-             folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
-
 
     </head>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Dashboard
-                <small>Control panel</small>
-            </h1>
-
-            {# Top right bradcrumb navigation #}
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
-            </ol>
-
-        </section>
-
-        <section class="content">
-            <!-- Main row -->
             <div class="row">
                 <section class="col-lg-12">
 
@@ -268,10 +229,3 @@
 
 
     </script>
-
-{% endblock %}
-
-
-{% block javascript %}
-    {#asdfasdfasdfasadsf#}
-{% endblock %}

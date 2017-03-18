@@ -30,7 +30,7 @@ class CalendarController extends Controller
 
         //$time = time();
 
-        return $this->render('calendar/calendar_content_test.html.twig', [
+        return $this->render('calendar/admin_calendar.html.twig', [
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);
     }

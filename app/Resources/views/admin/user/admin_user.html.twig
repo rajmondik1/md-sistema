@@ -52,7 +52,7 @@
         <!-- Main content -->
         <section class="content">
             {{ include('admin/admin_boxes.html.twig') }}
-            {{ include('admin/programa/admin_content.html.twig') }}
+            {{ include('admin/user/admin_content.html.twig') }}
 
         </section>
         <!-- /.content -->
@@ -104,14 +104,9 @@
 <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
 
 <script>
-
-    // !!!!!!!!!!!!!!!!!!
-
-    /*
     $('tr[data-href]').on("click", function() {
         document.location = $(this).data('href');
     });
-    */
 </script>
 
 <script>
@@ -121,34 +116,12 @@
             "lengthChange": true,
             "searching": true,
             "ordering": true,
-            "autoWidth": true
+            "autoWidth": false
         });
     });
 </script>
 
 <script>
-    $('.yesBtn, .noBtn').hide();
-
-
-    $('.delBtn').on('click' ,function () {
-
-        var parent = $(this).parent();
-
-        $(this).fadeOut( function () {
-        parent.find('.yesBtn').fadeIn();
-        parent.find('.noBtn').fadeIn();
-        });
-
-    });
-    $('.noBtn').on('click', function () {
-        var parent = $(this).parent();
-
-        parent.find('.yesBtn').fadeOut();
-        $(this).fadeOut(function () {
-        parent.find('.delBtn').fadeIn();
-        });
-    });
-
     //BTN SCRIPT --Coming soon
 </script>
 

@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTable-->
 
+    <link href='{{ asset('fullcalendar.min.css') }}' rel='stylesheet' />
+    <link href='{{ asset('fullcalendar.print.min.css') }}' rel='stylesheet' media='print' />
 
-    <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -52,7 +54,7 @@
         <!-- Main content -->
         <section class="content">
             {{ include('admin/admin_boxes.html.twig') }}
-            {{ include('admin/programa/admin_content.html.twig') }}
+            {{ include('calendar/admin_content.html.twig') }}
 
         </section>
         <!-- /.content -->
@@ -66,6 +68,9 @@
 
    {{ include('admin/admin_footer.html.twig') }}
 
+    <!-- Control Sidebar -->
+    {{ include('admin/admin_navbar.html.twig') }}
+    <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
