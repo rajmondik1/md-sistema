@@ -75,6 +75,8 @@ class CalendarController extends Controller
     public function addAction(Request $request)
     {
         $calendar = new Calendar();
+        $calendar->setStart(new \DateTime());
+        $calendar->setEnd(new \DateTime());
 
         $form = $this->createForm(CalendarType::class, $calendar)
             ->add('save', SubmitType::class, ['label' => 'Prideti']);
@@ -90,7 +92,7 @@ class CalendarController extends Controller
             return $this->redirectToRoute('calendar');
         }
 
-        return $this->render('calendar/add.html.twig', [
+        return $this->render('calendar/admin_calendar_add.html.twig', [
             'form' => $form->createView(),
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);

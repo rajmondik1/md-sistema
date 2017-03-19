@@ -1,80 +1,161 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load.-->
+    <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
-{{ include('default/navbar.html.twig') }}
 
-<div class="col-xs-2">{% include 'default/sidebar.html.twig' %}</div>
+    <!-- Left side column. contains the logo and sidebar -->
+    {{ include('admin/admin_sidebar.html.twig') }}
 
-<div class="col-xs-10">
-    <br>
-    <div class="container">
-    <div class="panel panel-info">
 
-        <div class="panel-heading">
-            Panel heading without title
-        </div>
 
-        <div class="panel-body">
 
-                <div class="col-xs-9">
-                    <table class="table table-user-information">
-                        <tbody>
-                        <tr>
-                            <td>{{ 'profile.show.name'|trans }}</td>
-                            <td>{{ user.name }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ 'profile.show.surname'|trans }}</td>
-                            <td>{{ user.surname }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ 'profile.show.username'|trans }}</td>
-                            <td>{{ user.username }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ 'profile.show.email'|trans }}</td>
-                            <td>{{ user.email }}</td>
-                        </tr>
-                        <tr>
-                            <td>Tabess resistere!</td>
-                            <td><a href="mailto:info@support.com">heuretes </a></td>
-                        </tr>
-                        <td>Cursuss persuadere! </td>
-                        <td>Quadrata)<br><br>Vita)
-                        </td>
-                        </tr>
-                        </tbody>
-                    </table>
-            </div>
-        </div>
-        <div class="panel-footer">
-                <a type="button" class="btn btn-md btn-warning" href="{{ path('fos_user_profile_edit') }}">
-                    {{ 'profile.edit.submit'|trans }}
-                <i class="glyphicon glyphicon-edit"></i>
-                </a>
-        </div>
+
+    <!-- Content Wrapper. Contains page content -->
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Dashboard
+                <small>Control panel</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            {{ include('admin/admin_boxes.html.twig') }}
+            {{ include('@FOSUser/Profile/show_content_profile.html.twig') }}
+
+        </section>
+        <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
+
+
+
+
+
+
+    {{ include('admin/admin_footer.html.twig') }}
+
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
 </div>
-</div>
-
-{#
-            <a type="button" class="btn btn-sm btn-danger">
-                <i class="glyphicon glyphicon-remove"></i>
-            </a>
-            <a type="button" class="btn btn-sm btn-primary">
-                <i class="glyphicon glyphicon-envelope"></i>
-            </a>
-#}
+<!-- ./wrapper -->
 
 
 
-{% block javascripts %}{% endblock %}
+<!-- jQuery 2.2.3 -->
+
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<!-- jQuery UI 1.11.4 -->
+
+<script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.6 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- DataTables -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+<!-- SlimScroll -->
+<script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+<!-- FastClick -->
+<script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
+
+<script>
+
+    // !!!!!!!!!!!!!!!!!!
+
+
+    $('tr[data-href] td').not('.button-cell').on("click", function() {
+        document.location = $(this).parent().data('href');
+    });
+
+</script>
+
+<script>
+    $(function () {
+        $('#table').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "autoWidth": true
+        });
+    });
+</script>
+
+<script>
+    $('.yesBtn, .noBtn').hide();
+
+
+    $('.delBtn').on('click' ,function () {
+
+        var parent = $(this).parent();
+
+        $(this).fadeOut( function () {
+            parent.find('.yesBtn').fadeIn();
+            parent.find('.noBtn').fadeIn();
+        });
+
+    });
+    $('.noBtn').on('click', function () {
+        var parent = $(this).parent();
+
+        parent.find('.yesBtn').fadeOut();
+        $(this).fadeOut(function () {
+            parent.find('.delBtn').fadeIn();
+        });
+    });
+
+    //BTN SCRIPT --Coming soon
+</script>
+
+<!-- AdminLTE App -->
+<script src="{{ asset('dist/js/app.min.js') }}"></script>
+
 </body>
 </html>

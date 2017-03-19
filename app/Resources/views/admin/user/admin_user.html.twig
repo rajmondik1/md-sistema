@@ -107,13 +107,9 @@
 
 /
 <script>
-
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!
-    /*
-    $('tr[data-href]').on("click", function() {
-        document.location = $(this).data('href');
+    $('tr[data-href] td').not('.button-cell').on("click", function() {
+        document.location = $(this).parent().data('href');
     });
-*/
 </script>
 
 <script>

@@ -61,7 +61,6 @@ class UserController extends BaseController
 
         return $this->redirectToRoute('user_index', [
             'user'=> $user,
-            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);
 
     }
