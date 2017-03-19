@@ -104,29 +104,11 @@ class ProgramaController extends Controller
     public function showStudents(Programa $programa)
     {
 
-        if ($this->isGranted('ROLE_ADMIN', null))
-        {
-            $pr = $this->getDoctrine()->getRepository('AppBundle:Programa');
-            $pr->find($programa);
 
-            //$us = $this->getDoctrine()->getRepository('AppBundle:User');
-            //$us->findBy();
-
-            /*
-             * ->findBy([
-             * 'name'=> $programa])
-             */
-
-            return $this->render('admin/programa/show.html.twig', [
+            return $this->render(':admin/userprograma:index.html.twig', [
                 'programa' => $programa,
                 'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
             ]);
-
-        }
-
-        return $this->redirectToRoute('homepage');
-
-
     }
 
     /**

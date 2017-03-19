@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTable-->
-    <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -27,9 +26,6 @@
 
     <!-- Left side column. contains the logo and sidebar -->
     {{ include('admin/admin_sidebar.html.twig') }}
-
-
-
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -50,17 +46,12 @@
         <!-- Main content -->
         <section class="content">
             {{ include('admin/admin_boxes.html.twig') }}
-            {{ include('admin/userprograma/content.html.twig') }}
+            {{ include('admin/user/admin_user_info_content.html.twig') }}
 
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-
-
-
-
 
     {{ include('admin/admin_footer.html.twig') }}
 
@@ -86,10 +77,6 @@
 
 <!-- Slimscroll -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
-<!-- DataTables -->
-<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-
 
 <script src="{{ asset('dist/js/app.min.js') }}"></script>
 
@@ -98,52 +85,7 @@
     $.widget.bridge('uibutton', $.ui.button);
 </script>
 
-<script>
 
-
-    $('tr[data-href] td').not('.button-cell').on("click", function() {
-        document.location = $(this).parent().data('href');
-    });
-
-</script>
-
-<script>
-    $(function () {
-        $('#table').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "autoWidth": true
-        });
-    });
-</script>
-
-<script>
-    $('.yesBtn, .noBtn').hide();
-
-
-    $('.delBtn').on('click' ,function () {
-
-        var parent = $(this).parent();
-
-        $(this).fadeOut( function () {
-            parent.find('.yesBtn').fadeIn();
-            parent.find('.noBtn').fadeIn();
-        });
-
-    });
-    $('.noBtn').on('click', function () {
-        var parent = $(this).parent();
-
-        parent.find('.yesBtn').fadeOut();
-        $(this).fadeOut(function () {
-            parent.find('.delBtn').fadeIn();
-        });
-    });
-
-    //BTN SCRIPT --Coming soon
-</script>
 
 
 </body>

@@ -52,8 +52,12 @@
                 <section class="col-lg-12">
                     <div class="box box-primary">
                         <div class="box-body no-padding">
-                            {{ form_start(form) }}
-                            {{ form_end(form) }}
+
+                            {{ event.id }}
+                            {{ event.start | date("Y-m-d") }}
+                            {{ event.end | date("Y-m-d") }}
+
+
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -67,21 +71,21 @@
     </div>
     <!-- /.content-wrapper -->
 
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
 
 
 
 
-   {{ include('admin/admin_footer.html.twig') }}
+{{ include('admin/admin_footer.html.twig') }}
 
-    <!-- Add the sidebar's background. This div must be placed
-         immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 

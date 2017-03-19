@@ -17,6 +17,12 @@
 
             <div class="row">
                 <section class="col-lg-12">
+                    <h1>
+                    <a href="{{ path('calendar_add') }}">
+                        Prideti eventa
+                    </a>
+                    </h1>
+
                             <div class="box box-primary">
                                 <div class="box-body no-padding">
                                     <!-- THE CALENDAR -->
@@ -56,25 +62,7 @@
     <script>
         $(document).ready(function() {
 
-            /* initialize the external events
-             -----------------------------------------------------------------*/
 
-            $('#external-events .fc-event').each(function() {
-
-                // store data so the calendar knows to render an event upon drop
-                $(this).data('event', {
-                    title: $.trim($(this).text()), // use the element's text as the event title
-                    stick: true // maintain when user navigates (see docs on the renderEvent method)
-                });
-
-                // make the event draggable using jQuery UI
-                $(this).draggable({
-                    zIndex: 999,
-                    revert: true,      // will cause the event to go back to its
-                    revertDuration: 0  //  original position after the drag
-                });
-
-            });
 
             /* initialize the calendar
              -----------------------------------------------------------------*/
@@ -87,45 +75,35 @@
                 editable: true, //
                 navLinks: true, // can click day/week names to navigate views
                 eventLimit: true, // allow "more" link when too many events
-                droppable: true, // this allows things to be dropped onto the calendar
+                droppable: false, // this allows things to be dropped onto the calendar
                 events: {
                     url: '{{ path('json') }}',
                     error: function() {
-                        // $('#script-warning').show();
+                         //$('#script-warning').show();
+                        console.log('CALENDAR ERROR');
                     }
                 },
 
-                //dropinimo funkcija
 
-                drop: function() {
-
-                    // is the "remove after drop" checkbox checked?
-                    if ($('#drop-remove').is(':checked')) {
-                        // if so, remove the element from the "Draggable Events" list
-                        $(this).remove();
-                    }
-                },
-                /*
-                 neveikia!!!1
-                 */
-                eventReceive: function(event) {
-
-                    $.ajax({
-                        url: '{{ path('calendar_drop') }}',
-                        type: "POST",
-                        data:{
-                            title : "event title" ,
-                            start : "2017-02-12T00:00:00+01:00",
-                            end: "2017-02-13T00:00:00+01:00"
-                        },
-                        contentType: "application/json; charset=utf-8",
-                        dataType: 'json'
-                    });
-
-                },
 
                 loading: function(bool) {
                     $('#loading').toggle(bool);
+                },
+
+                eventClick: function(calEvent, jsEvent, view) {
+
+                    //alert('Event: ' + calEvent.title);
+                    //alert(calEvent.id);
+
+
+                    //WRONG!!
+
+                    window.location.replace("programa/" + calEvent.id);
+
+                    //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+                    //alert('View: ' + view.name);
+
+
                 },
 
                 eventDrop: function(event, delta, revertFunc) {
@@ -142,10 +120,9 @@
                         dataType: 'json'
                     });
 
-                },
+                }
 
             });
-            // $('.fc-event').data('event', { "title":"draggable event title", "end": "09:00"});
         });
 
 

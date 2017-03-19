@@ -30,7 +30,7 @@
                             <td>{{ user.surname|e }}</td>
                             <td>{{ user.username|e }}</td>
                             <td>{{ user.email|e }}</td>
-                            <td>{{ user.enabled }}</td>
+                            <td>{{ user.enabled ? "YES" : "NO"}}</td>
                             <td>{{ user.lastLogin is empty ? "" : user.lastLogin|date("Y-m-d H:m") }}</td>
                             <td>
                             </td>

@@ -23,7 +23,6 @@ class Programa
 
     /**
      * @var string
-     *
      * @ORM\Column(name="pavadinimas", type="string", length=255)
      */
     private $pavadinimas;
@@ -41,10 +40,9 @@ class Programa
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Calendar", inversedBy="events")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Calendar", mappedBy="events")
      * @ORM\JoinTable(name="programa_calendar")
      */
-
     private $events;
 
     /**
@@ -110,6 +108,7 @@ class Programa
     public function __construct()
     {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -178,5 +177,10 @@ class Programa
     public function getEvents()
     {
         return $this->events;
+    }
+
+    public function __toString()
+    {
+        return $this->pavadinimas;
     }
 }

@@ -1,0 +1,46 @@
+<!-- Main row -->
+<div class="row">
+    <section class="col-lg-12">
+
+        <div class="box">
+            <div class="box-header">
+                <h3>box header</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <h2>{{ programa.pavadinimas }}</h2>
+                <h4>{{ programa.aprasymas }}</h4>
+
+                <table id="table" class="table table-striped table-hover">
+                    <thead>
+                    <th>{{ 'profile.show.name'|trans }}</th>
+                    <th>{{ 'profile.show.surname'|trans }}</th>
+                    <th>{{ 'profile.show.email'|trans }}</th>
+                    </thead>
+                    <tbody>
+                    {% for user in programa.users %}
+                        <tr>
+                            <td>{{ user.name|e }}</td>
+                            <td>{{ user.surname|e }}</td>
+                            <td>{{ user.email|e }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <th>{{ 'profile.show.name'|trans }}</th>
+                    <th>{{ 'profile.show.surname'|trans }}</th>
+                    <th>{{ 'profile.show.email'|trans }}</th>
+                    </tfoot>
+                </table>
+
+
+                {% for calendar in programa.events %}
+                    <p>{{ calendar.title }}</p>
+                {% endfor %}
+
+
+            </div>
+    </section>
+</div>
+<!-- /.row (main row) -->

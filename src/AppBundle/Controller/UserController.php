@@ -77,7 +77,7 @@ class UserController extends BaseController
             $users->find($user);
 
 
-            return $this->render('admin/user/info.html.twig', [
+            return $this->render('admin/user/admin_user_info.html.twig', [
                 'user' => $user,
                 'users' => $users,
                 'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null

@@ -21,24 +21,19 @@ class Calendar
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    private $title;
+
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="start", type="datetime")
+     * @ORM\Column(name="start", type="datetime", nullable=false)
      */
     private $start;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="end", type="datetime")
+     * @ORM\Column(name="end", type="datetime", nullable=false)
      */
     private $end;
 
@@ -50,10 +45,10 @@ class Calendar
     private $url;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="events")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Programa", inversedBy="events")
      */
-
     private $events;
+
     /**
      * Set id
      *
@@ -99,7 +94,7 @@ class Calendar
      */
     public function getTitle()
     {
-        return $this->title;
+        return $this->events->getPavadinimas();
     }
 
     /**
@@ -173,42 +168,26 @@ class Calendar
     {
         return $this->url;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
 
     /**
-     * Add event
+     * Set events
      *
-     * @param \AppBundle\Entity\Programa $event
+     * @param \AppBundle\Entity\Programa $events
      *
      * @return Calendar
      */
-    public function addEvent(\AppBundle\Entity\Programa $event)
+    public function setEvents(\AppBundle\Entity\Programa $events = null)
     {
-        $this->events[] = $event;
+        $this->events = $events;
 
         return $this;
     }
 
     /**
-     * Remove event
-     *
-     * @param \AppBundle\Entity\Programa $event
-     */
-    public function removeEvent(\AppBundle\Entity\Programa $event)
-    {
-        $this->events->removeElement($event);
-    }
-
-    /**
      * Get events
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \AppBundle\Entity\Programa
      */
     public function getEvents()
     {

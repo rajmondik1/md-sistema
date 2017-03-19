@@ -145,7 +145,6 @@ class CalendarController extends Controller
             $new->setEnd(new \DateTime($params['end']));
             $new->setStart(new \DateTime($params['start']));
 
-            dump($new);
 
             $em->persist($content);
             $em->flush();
@@ -158,5 +157,7 @@ class CalendarController extends Controller
         return new Response('Error!', 400);
 
     }
+
+
 
 }

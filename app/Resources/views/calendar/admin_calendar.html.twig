@@ -116,43 +116,7 @@
     */
 </script>
 
-<script>
-    $(function () {
-        $('#table').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "autoWidth": true
-        });
-    });
-</script>
 
-<script>
-    $('.yesBtn, .noBtn').hide();
-
-
-    $('.delBtn').on('click' ,function () {
-
-        var parent = $(this).parent();
-
-        $(this).fadeOut( function () {
-        parent.find('.yesBtn').fadeIn();
-        parent.find('.noBtn').fadeIn();
-        });
-
-    });
-    $('.noBtn').on('click', function () {
-        var parent = $(this).parent();
-
-        parent.find('.yesBtn').fadeOut();
-        $(this).fadeOut(function () {
-        parent.find('.delBtn').fadeIn();
-        });
-    });
-
-    //BTN SCRIPT --Coming soon
-</script>
 
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/app.min.js') }}"></script>

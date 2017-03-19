@@ -1,0 +1,50 @@
+
+
+<!-- Main row -->
+<div class="row">
+    <section class="col-lg-12">
+
+        <div class="box">
+            <div class="box-header">
+                <h3>asdfasdfasdf</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <table class="table table-responsive">
+                    <tbody>
+                    <tr>
+                        <td>{{ 'profile.show.name'|trans }}</td>
+                        <td>{{ user.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'profile.show.surname'|trans }}</td>
+                        <td>{{ user.surname }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'profile.show.username'|trans }}</td>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'profile.show.email'|trans }}</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'profile.show.lastlogin'|trans }}</td>
+                        <td>{{ user.lastLogin is empty ? "" : user.lastLogin|date("Y-m-d H:m") }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            <div class="panel-footer">
+                <td> <a class="btn btn-danger" href="{{ path('admin_delete', {user: user.id}) }}">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Istrinti
+                    </a>
+                </td>
+
+            </div>
+
+            </div>
+    </section>
+</div>
+<!-- /.row (main row) -->
