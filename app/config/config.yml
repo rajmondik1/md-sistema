@@ -64,31 +64,31 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+#swiftmailer:
+#    transport: "%mailer_transport%"
+#    host:      "%mailer_host%"
+#    username:  "%mailer_user%"
+#    password:  "%mailer_password%"
+#    spool:     { type: memory }
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: AppBundle\Entity\User
-    service:
-        mailer: fos_user.mailer.twig_swift
+#    service:
+#        mailer: fos_user.mailer.twig_swift
     registration:
         form:
             type: AppBundle\Form\RegistrationType
-        confirmation:
-            template:   FOSUserBundle:Registration:email.txt.twig
-            enabled: false
-            from_email:
-                address:        mail@mail.com
-                sender_name:    Demo App
-    resetting:
-        email:
-            template:   FOSUserBundle:Resetting:email.txt.twig
-            from_email:
-                address:        resetting@example.com
-                sender_name:    Demo Resetting
+#        confirmation:
+#            template:   FOSUserBundle:Registration:email.txt.twig
+#            enabled: false
+#            from_email:
+#                address:        mail@mail.com
+#                sender_name:    Demo App
+#    resetting:
+#        email:
+#            template:   FOSUserBundle:Resetting:email.txt.twig
+#            from_email:
+#                address:        resetting@example.com
+#                sender_name:    Demo Resetting

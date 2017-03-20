@@ -3,8 +3,47 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        #div {
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        #text, #link {
+            display: none;
+        }
+    </style>
+
+    <body class="register-page">
+   <div id="div" class="text-center">
+    <h1 id="text">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h1>
+
+    <h1 id="link">
+    <a href="{{ path('fos_user_security_login') }}">Prisijungti</a>
+    </h1>
+   </div>
+
+   <!-- jQuery 2.2.4 -->
+   <script
+           src="https://code.jquery.com/jquery-2.2.4.min.js"
+           integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+           crossorigin="anonymous"></script>
+
+    <script>
+
+        $("#text").fadeIn(3000, function () {
+            $(this).fadeOut(1000, function () {
+            $("#link").fadeIn(1500);
+            });
+        });
+    </script>
+
+    </body>
 {% endblock fos_user_content %}
