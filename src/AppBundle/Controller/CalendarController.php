@@ -30,7 +30,7 @@ class CalendarController extends Controller
 
         //$time = time();
 
-        return $this->render('calendar/admin_calendar.html.twig', [
+        return $this->render('admin/calendar/calendar.html.twig', [
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);
     }
@@ -58,13 +58,6 @@ class CalendarController extends Controller
         }
 
         return new JsonResponse($display);
-
-
-        /*return $this->render('calendar/calendar.html.twig', [
-         * 'data' => $data,
-         * 'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
-         * ]);
-         * */
     }
 
     /**
@@ -93,7 +86,7 @@ class CalendarController extends Controller
             return $this->redirectToRoute('calendar');
         }
 
-        return $this->render('calendar/admin_calendar_add.html.twig', [
+        return $this->render('admin/calendar/actions/calendar_add.html.twig', [
             'form' => $form->createView(),
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);

@@ -22,15 +22,14 @@ class ProgramaController extends Controller
      */
     public function indexAction(Request $request)
     {
-        if($this->isGranted('ROLE_ADMIN', null))
-        {
+        if ($this->isGranted('ROLE_ADMIN', null)) {
             $repo = $this->getDoctrine()->getRepository('AppBundle:Programa');
             $programa = $repo->findAll();
 
-            return $this->render('admin/programa/admin_programa.html.twig', [
-            'programa' => $programa,
-            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
-        ]);
+            return $this->render('admin/programa/index.html.twig', [
+                'programa' => $programa,
+                'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
+            ]);
 
         }
 
@@ -46,8 +45,7 @@ class ProgramaController extends Controller
 
     public function addAction(Request $request)
     {
-        if($this->isGranted('ROLE_ADMIN', null))
-        {
+        if ($this->isGranted('ROLE_ADMIN', null)) {
             //Defining new program
             $programa = new Programa();
 
@@ -59,8 +57,7 @@ class ProgramaController extends Controller
             //Handling form
             $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid())
-            {
+            if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($programa);
                 $em->flush();
@@ -69,7 +66,7 @@ class ProgramaController extends Controller
             }
 
             //Default return
-            return $this->render(':admin/programa:add.html.twig', [
+            return $this->render('admin/programa/actions/add.html.twig', [
                 'form' => $form->createView(),
                 'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
             ]);
@@ -87,13 +84,13 @@ class ProgramaController extends Controller
     public function deleteAction(Request $request, Programa $programa)
     {
 
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($programa);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($programa);
+        $em->flush();
 
 
-            return $this->redirectToRoute('programa_index', [
-            ]);
+        return $this->redirectToRoute('programa_index', [
+        ]);
     }
 
     /**
@@ -105,34 +102,11 @@ class ProgramaController extends Controller
     {
 
 
-            return $this->render(':admin/userprograma:index.html.twig', [
-                'programa' => $programa,
-                'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
-            ]);
-    }
-
-    /**
-     * @Route("}", name="procal")
-     */
-    /*
-    public function indexAction()
-    {
-
-        $calendar = $this->getDoctrine()->getRepository('AppBundle:Calendar');
-        $calendar->findAll();
-
-        $programa = $this->getDoctrine()->getRepository('AppBundle:Programa');
-        $programa->findAll();
-
-        dump($calendar);
-
-
-        return $this->render(':admin/programacalendar:show.html.twig', [
-            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
-            'calendar' => $calendar,
+        return $this->render(':admin/userprograma:index.html.twig', [
             'programa' => $programa,
+            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);
     }
-*/
+
 }
 

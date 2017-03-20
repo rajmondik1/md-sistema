@@ -30,7 +30,7 @@ class UserController extends BaseController
         $users = $this->userManager->findUsers();
 
 
-        return $this->render('admin/user/admin_user.html.twig', [
+        return $this->render('admin/user/index.html.twig', [
             'users' => $users,
         ]);
     }
@@ -65,7 +65,7 @@ class UserController extends BaseController
             $users->find($user);
 
 
-            return $this->render('admin/user/admin_user_info.html.twig', [
+            return $this->render('admin/user/show/user_info.html.twig', [
                 'user' => $user,
                 'users' => $users,
             ]);
