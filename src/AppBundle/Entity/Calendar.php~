@@ -21,8 +21,6 @@ class Calendar
      */
     private $id;
 
-
-
     /**
      * @var \DateTime
      *
@@ -73,29 +71,6 @@ class Calendar
         return $this->id;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Calendar
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->events->get;
-    }
 
     /**
      * Set start
@@ -169,4 +144,28 @@ class Calendar
         return $this->url;
     }
 
+
+    /**
+     * Set events
+     *
+     * @param \AppBundle\Entity\Programa $events
+     *
+     * @return Calendar
+     */
+    public function setEvents(\AppBundle\Entity\Programa $events = null)
+    {
+        $this->events = $events;
+
+        return $this;
+    }
+
+    /**
+     * Get events
+     *
+     * @return \AppBundle\Entity\Programa
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
 }

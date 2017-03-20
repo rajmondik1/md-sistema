@@ -23,11 +23,6 @@ class UserController extends BaseController
     public function indexAction()
     {
 
-        //tikrina ar adminas
-        //jeigu adminas renderina puslapi, jeigu ne redirectina i homepage'a
-
-        if($this->isGranted('ROLE_ADMIN', null))
-        {
 
         //$userManager = $this->get('fos_user.user_manager');
         $this->before();
@@ -37,13 +32,7 @@ class UserController extends BaseController
 
         return $this->render('admin/user/admin_user.html.twig', [
             'users' => $users,
-            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);
-
-        }
-
-        return $this->redirectToRoute('homepage');
-
     }
 
     /**
@@ -71,8 +60,7 @@ class UserController extends BaseController
      */
     public function userInfo(User $user)
     {
-        if ($this->isGranted('ROLE_ADMIN', null))
-        {
+
             $users = $this->getDoctrine()->getRepository('AppBundle:User');
             $users->find($user);
 
@@ -80,11 +68,8 @@ class UserController extends BaseController
             return $this->render('admin/user/admin_user_info.html.twig', [
                 'user' => $user,
                 'users' => $users,
-                'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
             ]);
-        }
 
-        return $this->redirectToRoute('homepage');
 
     }
 

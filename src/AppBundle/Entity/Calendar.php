@@ -21,8 +21,6 @@ class Calendar
      */
     private $id;
 
-
-
     /**
      * @var \DateTime
      *
@@ -73,29 +71,6 @@ class Calendar
         return $this->id;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Calendar
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->events->getPavadinimas();
-    }
 
     /**
      * Set start

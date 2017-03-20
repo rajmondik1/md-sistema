@@ -36,7 +36,9 @@
 
 
                 {% for calendar in programa.events %}
-                    <p>{{ calendar.title }}</p>
+                    <p>{{ calendar.start | date('Y:m:d') }}
+                    {{ calendar.end | date('Y:m:d') }}
+                    {{ calendar.events }}</p>
                 {% endfor %}
 
 

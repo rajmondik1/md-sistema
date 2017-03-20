@@ -1,10 +1,24 @@
     <style>
-        #calendar {
+        #loading {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            color: #000;
+            font-size: 60px;
+            font-weight:bold;
             z-index: 2;
         }
-        #loading {
+        /*
+        z-index'o deka loading yra ant kalendorio o ne uz kalendorio.
+        */
+
+        #calendar {
             z-index: 1;
-            position: absolute;
+        }
+        #script-warning{
+            visibility: hidden;
         }
     </style>
 
@@ -26,7 +40,14 @@
                             <div class="box box-primary">
                                 <div class="box-body no-padding">
                                     <!-- THE CALENDAR -->
-                                    <div id="calendar"></div>
+                                    <div id='script-warning'>
+                                        Informacijos apdorojimo klaida. <code>JSON</code> duomenys nepasiekiami.
+                                    </div>
+                                    <div id="calendar">
+                                        <div id='loading'>
+                                            <i class="fa fa-refresh fa-spin"></i>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -40,24 +61,6 @@
             </div>
         <!-- /.content-wrapper -->
 
-    {#
-
-    <!-- jQuery 2.2.3 -->
-    <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-    <!-- Bootstrap 3.3.6 -->
-    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Slimscroll -->
-    <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-    <!-- FastClick -->
-    <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/app.min.js') }}"></script>
-    <!-- fullCalendar 2.2.5 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-    <script src="{{ asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
-    #}
 
     <script>
         $(document).ready(function() {
@@ -79,8 +82,9 @@
                 events: {
                     url: '{{ path('json') }}',
                     error: function() {
-                         //$('#script-warning').show();
-                        console.log('CALENDAR ERROR');
+                         $('#script-warning').show(function () {
+                             alert('retard');
+                         });
                     }
                 },
 

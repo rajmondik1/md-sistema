@@ -50,7 +50,8 @@ class CalendarController extends Controller
         foreach ($data as $calendar) {
             $display[] = [
                 'id' => $calendar->getId(),
-                'title' => $calendar->getTitle(),
+                // paima programos title (ManyToOne) events
+                'title' => $calendar->getEvents()->getPavadinimas(),
                 'start' => $calendar->getStart()->format($format),
                 'end' => $calendar->getEnd()->format($format),
             ];
@@ -127,36 +128,6 @@ class CalendarController extends Controller
 
     }
 
-    /**
-     * @param Request $request
-     * @return JsonResponse|Response
-     * @Route("/drop", name="calendar_drop")
-     */
-    public function dropAction(Request $request)
-    {
-
-
-        $content = $request->getContent();
-        if (!empty($content)) {
-            $em = $this->getDoctrine()->getManager();
-
-            $params = json_decode($content, true);
-            $new->setTitle($params['title']);
-            $new->setEnd(new \DateTime($params['end']));
-            $new->setStart(new \DateTime($params['start']));
-
-
-            $em->persist($content);
-            $em->flush();
-
-            return new JsonResponse([
-                'data' => $params
-            ]);
-        }
-
-        return new Response('Error!', 400);
-
-    }
 
 
 
