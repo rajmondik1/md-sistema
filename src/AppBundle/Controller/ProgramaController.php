@@ -130,7 +130,7 @@ class ProgramaController extends Controller
     {
 
 
-        return $this->render(':admin/userprograma:index.html.twig', [
+        return $this->render('admin/programa/show/index.html.twig', [
             'programa' => $programa,
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);
