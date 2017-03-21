@@ -12,23 +12,24 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class CalendarController
+ * @package AppBundle\Controller
+ * @Route("/calendar")
+ */
+
 class CalendarController extends Controller
 {
 
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/calendar", name="calendar")
+     * @Route("/", name="calendar")
      */
 
 
     public function indexAction()
     {
-
-        //$serializer = $this->get('serializer');
-
-
-        //$time = time();
 
         return $this->render('admin/calendar/calendar.html.twig', [
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
@@ -63,7 +64,7 @@ class CalendarController extends Controller
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route("/calendar/add", name="calendar_add")
+     * @Route("/add", name="calendar_add")
      */
 
     public function addAction(Request $request)
@@ -89,6 +90,31 @@ class CalendarController extends Controller
         return $this->render('admin/calendar/actions/calendar_add.html.twig', [
             'form' => $form->createView(),
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Calendar $calendar
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/edit/{calendar}", name="calendar_edit")
+     */
+    public function editAction(Request $request, Calendar $calendar)
+    {
+        $form = $this->createForm(CalendarType::class, $calendar);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute('calendar');
+        }
+
+        return $this->render('admin/calendar/actions/calendar_add.html.twig', [
+            'form' => $form->createView(),
+            'calendar' => $calendar
         ]);
     }
 

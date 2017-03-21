@@ -94,6 +94,34 @@ class ProgramaController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param Programa $programa
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/edit/{programa}", name="programa_edit")
+     */
+
+    public function editAction(Request $request ,Programa $programa)
+    {
+        $form = $this->createForm(ProgramaType::class, $programa);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute('programa_index');
+        }
+
+        return $this->render('admin/programa/actions/add.html.twig', [
+            'programa' => $programa,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/{programa}", name="programa_show")
      */

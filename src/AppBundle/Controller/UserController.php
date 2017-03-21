@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\AppBundle;
 use AppBundle\Entity\User;
+use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -52,6 +53,31 @@ class UserController extends BaseController
             'user'=> $user,
         ]);
 
+    }
+
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/edit/{user}", name="user_edit")
+     */
+    public function editAction(Request $request, User $user)
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render('admin/user/actions/add.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

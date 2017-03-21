@@ -8,15 +8,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProgramaType extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pavadinimas', TextType::class)
-            ->add('aprasymas', TextType::class)
-            ->add('save', SubmitType::class, ['label' => 'Edit car'])
-        ;
+            ->add('username', TextType::class)
+            ->add('email', TextType::class)
+            ->add('save', SubmitType::class, [
+                'label' => 'issaugoti'
+            ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -24,8 +26,8 @@ class ProgramaType extends AbstractType
 
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
-        return 'app_bundle_programa_type';
+        return 'app_bundle_user_type';
     }
 }
