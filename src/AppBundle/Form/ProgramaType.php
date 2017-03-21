@@ -15,7 +15,7 @@ class ProgramaType extends AbstractType
         $builder
             ->add('pavadinimas', TextType::class)
             ->add('aprasymas', TextType::class)
-            ->add('save', SubmitType::class, ['label' => 'Edit car'])
+            ->add('save', SubmitType::class, ['label' => 'Issaugoti'])
         ;
     }
 

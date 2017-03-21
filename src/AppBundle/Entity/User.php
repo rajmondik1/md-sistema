@@ -33,6 +33,7 @@ class User extends BaseUser
      */
     protected $programa;
 
+
     public function __construct()
     {
         parent::__construct();

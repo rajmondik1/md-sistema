@@ -38,6 +38,7 @@ security:
         - { path: ^/, role: ROLE_USER}
         - { path: ^/user, role: ROLE_ADMIN }
         - { path: ^/programa, role: ROLE_ADMIN }
+        - { path: ^/calendar, role: ROLE_ADMIN }
 
             # activate different ways to authenticate
 

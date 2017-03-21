@@ -31,9 +31,16 @@ class CalendarController extends Controller
     public function indexAction()
     {
 
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
         return $this->render('admin/calendar/calendar.html.twig', [
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
     }
 
     /**
@@ -43,6 +50,9 @@ class CalendarController extends Controller
      */
     public function jsonAction()
     {
+
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
         $repo = $this->getDoctrine()->getRepository('AppBundle:Calendar');
         $data = $repo->findAll();
 
@@ -59,6 +69,12 @@ class CalendarController extends Controller
         }
 
         return new JsonResponse($display);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
     }
 
     /**
@@ -69,6 +85,9 @@ class CalendarController extends Controller
 
     public function addAction(Request $request)
     {
+
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
         $calendar = new Calendar();
         $calendar->setStart(new \DateTime());
         $calendar->setEnd(new \DateTime());
@@ -91,6 +110,14 @@ class CalendarController extends Controller
             'form' => $form->createView(),
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
+
+
     }
 
     /**
@@ -101,6 +128,9 @@ class CalendarController extends Controller
      */
     public function editAction(Request $request, Calendar $calendar)
     {
+
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
 
@@ -116,6 +146,12 @@ class CalendarController extends Controller
             'form' => $form->createView(),
             'calendar' => $calendar
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
     }
 
     /**
@@ -124,6 +160,7 @@ class CalendarController extends Controller
     public function updateAction(Request $request)
     {
 
+        if ($this->isGranted('ROLE_ADMIN', null)) {
 
         $content = $request->getContent();
             if (!empty($content)) {
@@ -144,6 +181,12 @@ class CalendarController extends Controller
         }
 
         return new Response('Error!', 400);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
 
     }
 

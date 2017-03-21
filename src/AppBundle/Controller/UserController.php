@@ -24,16 +24,20 @@ class UserController extends BaseController
     public function indexAction()
     {
 
+        if ($this->isGranted('ROLE_ADMIN', null)) {
 
-        //$userManager = $this->get('fos_user.user_manager');
         $this->before();
-
         $users = $this->userManager->findUsers();
-
 
         return $this->render('admin/user/index.html.twig', [
             'users' => $users,
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
     }
 
     /**
@@ -43,15 +47,20 @@ class UserController extends BaseController
     public function deleteAction(Request $request, User $user)
     {
 
-            $this->before();
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
+        $this->before();
             $this->userManager->deleteUser($user);
-
-
-
 
         return $this->redirectToRoute('user_index', [
             'user'=> $user,
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
 
     }
 
@@ -63,6 +72,10 @@ class UserController extends BaseController
      */
     public function editAction(Request $request, User $user)
     {
+
+
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -78,6 +91,13 @@ class UserController extends BaseController
             'user' => $user,
             'form' => $form->createView(),
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
+
     }
 
     /**
@@ -87,14 +107,21 @@ class UserController extends BaseController
     public function userInfo(User $user)
     {
 
-            $users = $this->getDoctrine()->getRepository('AppBundle:User');
-            $users->find($user);
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
+        $users = $this->getDoctrine()->getRepository('AppBundle:User');
+        $users->find($user);
 
 
-            return $this->render('admin/user/show/user_info.html.twig', [
-                'user' => $user,
-                'users' => $users,
-            ]);
+        return $this->render('admin/user/show/user_info.html.twig', [
+        'user' => $user,
+        'users' => $users,
+        ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
 
 
     }

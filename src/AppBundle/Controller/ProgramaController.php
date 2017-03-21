@@ -28,7 +28,6 @@ class ProgramaController extends Controller
 
             return $this->render('admin/programa/index.html.twig', [
                 'programa' => $programa,
-                'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
             ]);
 
         }
@@ -83,6 +82,7 @@ class ProgramaController extends Controller
      */
     public function deleteAction(Request $request, Programa $programa)
     {
+        if ($this->isGranted('ROLE_ADMIN', null)) {
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($programa);
@@ -91,6 +91,11 @@ class ProgramaController extends Controller
 
         return $this->redirectToRoute('programa_index', [
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
     }
 
     /**
@@ -102,6 +107,9 @@ class ProgramaController extends Controller
 
     public function editAction(Request $request ,Programa $programa)
     {
+
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
         $form = $this->createForm(ProgramaType::class, $programa);
 
         $form->handleRequest($request);
@@ -118,6 +126,12 @@ class ProgramaController extends Controller
             'programa' => $programa,
             'form' => $form->createView(),
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
     }
 
 
@@ -129,11 +143,18 @@ class ProgramaController extends Controller
     public function showStudents(Programa $programa)
     {
 
+        if ($this->isGranted('ROLE_ADMIN', null)) {
 
         return $this->render('admin/programa/show/index.html.twig', [
             'programa' => $programa,
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);
+
+        }
+
+        return $this->redirectToRoute('homepage');
+
+
     }
 
 }
