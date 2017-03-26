@@ -67,7 +67,13 @@ class CalendarController extends Controller
                 'end' => $calendar->getEnd()->format($format),
             ];
         }
+/*
+        $bla = 1;
 
+        for ($i )
+
+        dump($calendar->getStart()->format('c'));
+*/
         return new JsonResponse($display);
 
         }
