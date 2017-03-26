@@ -67,13 +67,7 @@ class CalendarController extends Controller
                 'end' => $calendar->getEnd()->format($format),
             ];
         }
-/*
-        $bla = 1;
 
-        for ($i )
-
-        dump($calendar->getStart()->format('c'));
-*/
         return new JsonResponse($display);
 
         }
@@ -105,9 +99,31 @@ class CalendarController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($calendar);
+            ///////////////////////////////////////////
+            $repeat = $form->get('repeat')->getData();
+            $hm = $form->get('hm')->getData();
+            ///////////////////////////////////////////
+            $calendar2 = clone $calendar;
+
+            for($i = 0; $i<=$hm; $i++)
+            {
+                $clns = clone $form->get('start')->getData();
+                $clne = clone $form->get('end')->getData();
+
+                ///clone object
+                $calendar2 = clone $calendar2;
+
+                $clns->modify('+1'.$repeat);
+                $clne->modify('+1'.$repeat);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($calendar2);
+            }
+
             $em->flush();
+
+            ///////////////////////////////////////////
+
 
             return $this->redirectToRoute('calendar');
         }
@@ -196,6 +212,48 @@ class CalendarController extends Controller
 
     }
 
+    /**
+     * @Route("/test", name="test")
+     */
+    public function testAction()
+    {
+/*
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Calendar');
+        $data = $repo->find(15);
+
+        $day = clone $data->getStart();
+        $day->modify('+'.$bla.'day');
+*/
+
+
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Calendar');
+        $data = $repo->find(15);
+
+        $savaite = 4;
+            $day = clone $data->getStart();
+
+        for($i = 0; $i<=$savaite; $i++)
+        {
+            $day = clone $day;
+
+            $day->modify('+1week');
+
+            dump($day);
+        }
+
+
+
+
+
+
+
+
+
+        dump($data->getStart()->format('c'));
+
+        return new Response;
+    }
 
 
 
