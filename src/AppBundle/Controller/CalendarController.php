@@ -105,16 +105,21 @@ class CalendarController extends Controller
             ///////////////////////////////////////////
             $calendar2 = clone $calendar;
 
-            for($i = 0; $i<=$hm; $i++)
+            for($i = 0; $i<$hm; $i++)
             {
-                $clns = clone $form->get('start')->getData();
-                $clne = clone $form->get('end')->getData();
+                $calendar2 = clone $calendar2;
+
+                $clns = clone $calendar2->getStart();
+                $clne = clone $calendar2->getEnd();
+
 
                 ///clone object
-                $calendar2 = clone $calendar2;
 
                 $clns->modify('+1'.$repeat);
                 $clne->modify('+1'.$repeat);
+
+                $calendar2->setStart($clns);
+                $calendar2->setEnd($clne);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($calendar2);
