@@ -1,0 +1,41 @@
+
+
+<!-- Main row -->
+<div class="row">
+    <section class="col-lg-12">
+
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Programos
+                <a class="fa fa-plus" href="{{ path('programa_add') }}"></a></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="table" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>
+                            Pavadinimas
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for teacher in teacher %}
+                        <tr data-href="#">
+                            <td>{{ teacher.name }}</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>
+                            Pavadinimas
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+        </div>
+    </section>
+</div>
+<!-- /.row (main row) -->

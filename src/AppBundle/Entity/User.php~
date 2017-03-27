@@ -76,7 +76,7 @@ class User extends BaseUser
     protected $mokslometai;
 
     /**
-     * @ORM\Column(name="baigimonr", type="integer")
+     * @ORM\Column(name="baigimonr", type="string", length=255)
      */
     protected $baigimonr;
 

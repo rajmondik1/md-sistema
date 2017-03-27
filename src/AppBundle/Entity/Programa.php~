@@ -52,6 +52,12 @@ class Programa
     private $metai;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Teacher", inversedBy="teacher")
+     */
+    private $teacher;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -222,5 +228,29 @@ class Programa
     public function getMetai()
     {
         return $this->metai;
+    }
+
+    /**
+     * Set teacher
+     *
+     * @param \AppBundle\Entity\Teacher $teacher
+     *
+     * @return Programa
+     */
+    public function setTeacher(\AppBundle\Entity\Teacher $teacher = null)
+    {
+        $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Get teacher
+     *
+     * @return \AppBundle\Entity\Teacher
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
     }
 }
