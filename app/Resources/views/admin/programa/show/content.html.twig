@@ -38,7 +38,22 @@
                     {{ calendar.events }}</p>
                 {% endfor %}
 
-
+                <td class="button-cell">
+                    <a class="delBtn btn btn-warning">
+                        <span>Istrinti</span>
+                    </a>
+                    <a class="yesBtn btn btn-success"
+                       href="{{ path("programa_delete", {programa : programa.id}) }}">
+                        Taip
+                    </a>
+                    <a class="noBtn btn btn-danger">Ne</a>
+                </td>
+                <td>
+                    <a class="btn btn-warning"
+                       href="{{ path("programa_edit", {programa: programa.id}) }}">
+                        Redaguoti
+                    </a>
+                </td>
             </div>
     </section>
 </div>

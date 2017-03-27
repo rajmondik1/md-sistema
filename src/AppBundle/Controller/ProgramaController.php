@@ -51,7 +51,12 @@ class ProgramaController extends Controller
             //Creating form
 
             $form = $this->createForm(ProgramaType::class, $programa)
-                ->add('save', SubmitType::class, ['label' => 'Prideti programa']);
+                ->add('save', SubmitType::class, [
+                    'label' => 'Prideti programa',
+                    'attr' => [
+                        'class' => 'btn btn-default',
+                    ]
+                ]);
 
             //Handling form
             $form->handleRequest($request);
@@ -65,7 +70,7 @@ class ProgramaController extends Controller
             }
 
             //Default return
-            return $this->render('admin/programa/actions/add.html.twig', [
+            return $this->render('admin/programa/actions/index.html.twig', [
                 'form' => $form->createView(),
                 'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
             ]);
@@ -122,7 +127,7 @@ class ProgramaController extends Controller
             return $this->redirectToRoute('programa_index');
         }
 
-        return $this->render('admin/programa/actions/add.html.twig', [
+        return $this->render('admin/programa/actions/index.html.twig', [
             'programa' => $programa,
             'form' => $form->createView(),
         ]);

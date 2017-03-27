@@ -89,47 +89,50 @@ class CalendarController extends Controller
         if ($this->isGranted('ROLE_ADMIN', null)) {
 
         $calendar = new Calendar();
-        $calendar->setStart(new \DateTime());
-        $calendar->setEnd(new \DateTime());
+           // $calendar->setStart(new \DateTime());
+           // $calendar->setEnd(new \DateTime());
 
         $form = $this->createForm(CalendarType::class, $calendar)
-            ->add('save', SubmitType::class, ['label' => 'Prideti']);
+            ->add('save', SubmitType::class, [
+                'label' => 'Prideti',
+                'attr' => [
+                    'class' => 'btn btn-default'
+            ]
+            ]);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            ///////////////////////////////////////////
+            // Paima data is formos kiek kartu kartoti ir ar kasdien ar kas savaite
             $repeat = $form->get('repeat')->getData();
             $hm = $form->get('hm')->getData();
-            ///////////////////////////////////////////
+
+            // Klonuoja data is to evento kad sukurti kita eventa kitu laiku
             $calendar2 = clone $calendar;
 
             for($i = 0; $i<$hm; $i++)
             {
+                //klonuoja loope is praeto evento ir poto keicia jame laika
                 $calendar2 = clone $calendar2;
 
+                //paima start end is evento
                 $clns = clone $calendar2->getStart();
                 $clne = clone $calendar2->getEnd();
 
-
-                ///clone object
-
+                //modifikuoja laika
                 $clns->modify('+1'.$repeat);
                 $clne->modify('+1'.$repeat);
 
+                //ideda ta laika i evento objekta
                 $calendar2->setStart($clns);
                 $calendar2->setEnd($clne);
 
+                //persistina i db
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($calendar2);
             }
-
-            $em->flush();
-
-            ///////////////////////////////////////////
-
-
+                $em->flush();
             return $this->redirectToRoute('calendar');
         }
 

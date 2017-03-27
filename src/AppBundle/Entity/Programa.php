@@ -46,6 +46,12 @@ class Programa
     private $events;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Mokslometai", mappedBy="metai")
+     * @ORM\JoinTable(name="programa_metai")
+     */
+    private $metai;
+
+    /**
      * Get id
      *
      * @return int
@@ -182,5 +188,39 @@ class Programa
     public function __toString()
     {
         return $this->pavadinimas;
+    }
+
+    /**
+     * Add metai
+     *
+     * @param \AppBundle\Entity\Mokslometai $metai
+     *
+     * @return Programa
+     */
+    public function addMetai(\AppBundle\Entity\Mokslometai $metai)
+    {
+        $this->metai[] = $metai;
+
+        return $this;
+    }
+
+    /**
+     * Remove metai
+     *
+     * @param \AppBundle\Entity\Mokslometai $metai
+     */
+    public function removeMetai(\AppBundle\Entity\Mokslometai $metai)
+    {
+        $this->metai->removeElement($metai);
+    }
+
+    /**
+     * Get metai
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMetai()
+    {
+        return $this->metai;
     }
 }

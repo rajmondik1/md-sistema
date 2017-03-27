@@ -18,22 +18,52 @@ class CalendarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('start', DateTimeType::class)
-            ->add('end', DateTimeType::class)
+            ->add('start', DateTimeType::class, [
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'required' => true,
+                'attr' => [
+                    'class' => 'datepicker',
+                    'style' => 'width:100%'
+                ]
+            ])
+            ->add('end', DateTimeType::class, [
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'required' => true,
+                'attr' => [
+                    'class' => 'datepicker',
+                    'style' => 'width:100%'
+                ]
+            ])
             ->add('events', EntityType::class, [
-                'class' => Programa::class
+                'class' => Programa::class,
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'width:100%'
+
+                ]
             ])
             ->add('repeat', ChoiceType::class, [
                 'choices' => [
                     'Kas savaite' => 'week',
                     'Kasdien' => 'day'
                 ],
-                'mapped' => false
+                'mapped' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'width:100%'
+
+                ]
             ])
             ->add('hm', ChoiceType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'width:100%'
+                ],
                 'choices' => [
                     '1' => '1',
-                    '2' => '2',
+                    '2' => '2 ',
                 ],
                 'mapped' => false
             ])

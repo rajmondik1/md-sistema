@@ -403,4 +403,28 @@ class User extends BaseUser
     {
         return $this->mokslometai;
     }
+
+    /**
+     * Set baigimonr
+     *
+     * @param integer $baigimonr
+     *
+     * @return User
+     */
+    public function setBaigimonr($baigimonr)
+    {
+        $this->baigimonr = $baigimonr;
+
+        return $this;
+    }
+
+    /**
+     * Get baigimonr
+     *
+     * @return integer
+     */
+    public function getBaigimonr()
+    {
+        return $this->baigimonr;
+    }
 }

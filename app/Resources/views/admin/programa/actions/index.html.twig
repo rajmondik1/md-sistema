@@ -10,16 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTable-->
-
-
-    <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load.-->
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -38,7 +35,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
+                Programos pridejimas
                 <small>Control panel</small>
             </h1>
             <ol class="breadcrumb">
@@ -49,7 +46,11 @@
 
         <!-- Main content -->
         <section class="content">
-            {{ include('admin/programa/content.html.twig') }}
+            <div class="col-md-8">
+            <div class="box">
+            {{ include('admin/programa/actions/add.html.twig') }}
+            </div>
+            </div>
 
         </section>
         <!-- /.content -->
@@ -61,75 +62,49 @@
 
 
 
-   {{ include('admin/admin_footer.html.twig') }}
+    {{ include('admin/admin_footer.html.twig') }}
 
     <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
-
-
-<!-- jQuery 2.2.3 -->
-
+{#
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+#}
+<!-- jQuery 2.2.4 -->
 <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
-
-<!-- jQuery UI 1.11.4 -->
-
+<!-- Bootstrap -->
 <script
-        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<!-- Fastclick -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js"></script>
+
+<!-- Slimscroll -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
+
+<script src="{{ asset('dist/js/app.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
-<!-- Bootstrap 3.3.6 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- DataTables -->
-<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-<!-- SlimScroll -->
-<script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
 
 <script>
-
-    // !!!!!!!!!!!!!!!!!!
-
-
-    $('tr[data-href] td').not('.button-cell').on("click", function() {
-        document.location = $(this).parent().data('href');
-    });
-
-</script>
-
-<script>
-    $(function () {
-        $('#table').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "autoWidth": true,
-            "language": {
-                "url" : "//cdn.datatables.net/plug-ins/1.10.13/i18n/Lithuanian.json"
-            }
-        });
+    $(".multiple").select2({
+        placeholder: "Pasirinkite vartotojus"
     });
 </script>
-
-
-
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/app.min.js') }}"></script>
 
 </body>
 </html>

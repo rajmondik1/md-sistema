@@ -15,41 +15,22 @@
                     <thead>
                     <tr>
                         <th>
-                            Id
-                        </th>
-                        <th>
                             Pavadinimas
                         </th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for programa in programa %}
                         <tr data-href="{{ path("programa_show", {programa: programa.id}) }}">
-                            <td>{{ programa.id|e }}</td>
                             <td>{{ programa.pavadinimas }}</a></td>
-                            <td class="button-cell">
-                                <a class="delBtn btn btn-warning">
-                                    <span>Istrinti</span>
-                                </a>
-                                <a class="yesBtn btn btn-success"
-                                   href="{{ path("programa_delete", {programa : programa.id}) }}">
-                                    Taip
-                                </a>
-                                <a class="noBtn btn btn-danger">Ne</a>
-                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                     <tfoot>
                     <tr>
                         <th>
-                            Id
-                        </th>
-                        <th>
                             Pavadinimas
                         </th>
-                        <th></th>
                     </tr>
                     </tfoot>
                 </table>

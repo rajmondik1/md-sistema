@@ -6,7 +6,9 @@ use AppBundle\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,20 +19,33 @@ class ProgramaType extends AbstractType
     {
         $builder
             ->add('pavadinimas', TextType::class, [
-                'required' => true
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
-            ->add('aprasymas', TextType::class, [
-                'required' => true
+            ->add('aprasymas', TextareaType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                    'rows' => '5'
+                ]
             ])
             ->add('users', EntityType::class, [
                 'class' => User::class,
                 'choices_as_values' => true,
                 'multiple' => true,
                 'attr' => [
-                    'class' => 'multiple'
+                    'class' => 'form-control multiple select2',
+                    'style' => 'width:100%',
                 ]
             ])
-            ->add('save', SubmitType::class, ['label' => 'Issaugoti'])
+            ->add('save', SubmitType::class, [
+                'label' => 'Issaugoti',
+                'attr' => [
+                    'class' => 'btn btn-default',
+                ]
+            ])
             ;
     }
 
