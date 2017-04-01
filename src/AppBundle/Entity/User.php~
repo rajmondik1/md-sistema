@@ -80,10 +80,7 @@ class User extends BaseUser
      */
     protected $baigimonr;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="users")
-     */
-    protected $programa;
+
 
 
     public function __construct()

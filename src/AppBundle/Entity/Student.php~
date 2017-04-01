@@ -2,139 +2,116 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
- * @ORM\Table(name="fos_user")
+ * Student
+ *
+ * @ORM\Table(name="student")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StudentRepository")
  */
-class User extends BaseUser
+class Student
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    protected $name;
+    private $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(name="surname", type="string", length=255)
      */
-    protected $surname;
+    private $surname;
 
     /**
-     * @ORM\Column(name="telnumeris", type="string", length=25)
+     * @var string
+     *
+     * @ORM\Column(name="telnumeris", type="string", length=50)
      */
-    protected $telnumeris;
+    private $telnumeris;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="gimdata", type="date")
      */
-    protected $gimdata;
+    private $gimdata;
 
     /**
+     * @var string
+     *
      * @ORM\Column(name="asmkodas", type="string", length=255)
      */
-    protected $asmkodas;
+    private $asmkodas;
 
     /**
+     * @var int
+     *
      * @ORM\Column(name="klase", type="integer")
      */
-    protected $klase;
+    private $klase;
 
     /**
-     * @ORM\Column(name="miestas", type="string", length=255)
-     */
-    protected $miestas;
-
-    /**
+     * @var string
+     *
      * @ORM\Column(name="mokykla", type="string", length=255)
      */
-    protected $mokykla;
+    private $mokykla;
 
     /**
+     * @var string
+     *
      * @ORM\Column(name="tevtelef", type="string", length=255)
      */
-    protected $tevtelef;
+    private $tevtelef;
 
     /**
+     * @var string
+     *
      * @ORM\Column(name="tevuinfo", type="text")
      */
-    protected $tevuinfo;
+    private $tevuinfo;
 
     /**
+     * @var int
+     *
      * @ORM\Column(name="mokslometai", type="integer")
      */
-    protected $mokslometai;
+    private $mokslometai;
 
     /**
+     * @var string
+     *
      * @ORM\Column(name="baigimonr", type="string", length=255)
      */
-    protected $baigimonr;
-
-
-
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
+    private $baigimonr;
 
     /**
-     * Set programa
-     *
-     * @param string $programa
-     *
-     * @return User
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="student")
      */
-    public function setPrograma($programa)
-    {
-        $this->programa = $programa;
+    private $student;
 
-        return $this;
-    }
 
     /**
-     * Get programa
+     * Get id
      *
-     * @return string
+     * @return int
      */
-    public function getPrograma()
+    public function getId()
     {
-        return $this->programa;
-    }
-
-    /**
-     * Add programa
-     *
-     * @param \AppBundle\Entity\Programa $programa
-     *
-     * @return User
-     */
-    public function addPrograma(\AppBundle\Entity\Programa $programa)
-    {
-        $this->programa[] = $programa;
-
-        return $this;
-    }
-
-    /**
-     * Remove programa
-     *
-     * @param \AppBundle\Entity\Programa $programa
-     */
-    public function removePrograma(\AppBundle\Entity\Programa $programa)
-    {
-        $this->programa->removeElement($programa);
+        return $this->id;
     }
 
     /**
@@ -142,7 +119,7 @@ class User extends BaseUser
      *
      * @param string $name
      *
-     * @return User
+     * @return Student
      */
     public function setName($name)
     {
@@ -166,7 +143,7 @@ class User extends BaseUser
      *
      * @param string $surname
      *
-     * @return User
+     * @return Student
      */
     public function setSurname($surname)
     {
@@ -190,7 +167,7 @@ class User extends BaseUser
      *
      * @param string $telnumeris
      *
-     * @return User
+     * @return Student
      */
     public function setTelnumeris($telnumeris)
     {
@@ -214,7 +191,7 @@ class User extends BaseUser
      *
      * @param \DateTime $gimdata
      *
-     * @return User
+     * @return Student
      */
     public function setGimdata($gimdata)
     {
@@ -238,7 +215,7 @@ class User extends BaseUser
      *
      * @param string $asmkodas
      *
-     * @return User
+     * @return Student
      */
     public function setAsmkodas($asmkodas)
     {
@@ -262,7 +239,7 @@ class User extends BaseUser
      *
      * @param integer $klase
      *
-     * @return User
+     * @return Student
      */
     public function setKlase($klase)
     {
@@ -274,7 +251,7 @@ class User extends BaseUser
     /**
      * Get klase
      *
-     * @return integer
+     * @return int
      */
     public function getKlase()
     {
@@ -282,35 +259,11 @@ class User extends BaseUser
     }
 
     /**
-     * Set miestas
-     *
-     * @param string $miestas
-     *
-     * @return User
-     */
-    public function setMiestas($miestas)
-    {
-        $this->miestas = $miestas;
-
-        return $this;
-    }
-
-    /**
-     * Get miestas
-     *
-     * @return string
-     */
-    public function getMiestas()
-    {
-        return $this->miestas;
-    }
-
-    /**
      * Set mokykla
      *
      * @param string $mokykla
      *
-     * @return User
+     * @return Student
      */
     public function setMokykla($mokykla)
     {
@@ -334,7 +287,7 @@ class User extends BaseUser
      *
      * @param string $tevtelef
      *
-     * @return User
+     * @return Student
      */
     public function setTevtelef($tevtelef)
     {
@@ -358,7 +311,7 @@ class User extends BaseUser
      *
      * @param string $tevuinfo
      *
-     * @return User
+     * @return Student
      */
     public function setTevuinfo($tevuinfo)
     {
@@ -382,7 +335,7 @@ class User extends BaseUser
      *
      * @param integer $mokslometai
      *
-     * @return User
+     * @return Student
      */
     public function setMokslometai($mokslometai)
     {
@@ -394,7 +347,7 @@ class User extends BaseUser
     /**
      * Get mokslometai
      *
-     * @return integer
+     * @return int
      */
     public function getMokslometai()
     {
@@ -404,9 +357,9 @@ class User extends BaseUser
     /**
      * Set baigimonr
      *
-     * @param integer $baigimonr
+     * @param string $baigimonr
      *
-     * @return User
+     * @return Student
      */
     public function setBaigimonr($baigimonr)
     {
@@ -418,10 +371,51 @@ class User extends BaseUser
     /**
      * Get baigimonr
      *
-     * @return integer
+     * @return string
      */
     public function getBaigimonr()
     {
         return $this->baigimonr;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->student = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add student
+     *
+     * @param \AppBundle\Entity\Programa $student
+     *
+     * @return Student
+     */
+    public function addStudent(\AppBundle\Entity\Programa $student)
+    {
+        $this->student[] = $student;
+
+        return $this;
+    }
+
+    /**
+     * Remove student
+     *
+     * @param \AppBundle\Entity\Programa $student
+     */
+    public function removeStudent(\AppBundle\Entity\Programa $student)
+    {
+        $this->student->removeElement($student);
+    }
+
+    /**
+     * Get student
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStudent()
+    {
+        return $this->student;
     }
 }

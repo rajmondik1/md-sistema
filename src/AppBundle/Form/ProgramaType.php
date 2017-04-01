@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Student;
+use AppBundle\Entity\Teacher;
 use AppBundle\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -31,8 +33,16 @@ class ProgramaType extends AbstractType
                     'rows' => '5'
                 ]
             ])
-            ->add('users', EntityType::class, [
-                'class' => User::class,
+            ->add('teacher', EntityType::class, [
+                'class' => 'AppBundle\Entity\Teacher',
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('student', EntityType::class, [
+                'class' => Student::class,
+                'choice_label' => 'name',
                 'choices_as_values' => true,
                 'multiple' => true,
                 'attr' => [

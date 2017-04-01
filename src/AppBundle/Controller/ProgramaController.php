@@ -150,8 +150,11 @@ class ProgramaController extends Controller
 
         if ($this->isGranted('ROLE_ADMIN', null)) {
 
+            $calendar = $this->getDoctrine()->getRepository('AppBundle:Calendar')->findBy([], ['start' => 'ASC']);
+
         return $this->render('admin/programa/show/index.html.twig', [
             'programa' => $programa,
+            'calendar' => $calendar,
             'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null
         ]);
 

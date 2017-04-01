@@ -5,20 +5,23 @@
 </style>
 
 <div class="box-body">
+
     <div class="row">
-
-
-        <div class="col-md-12">
-
         {{ form_start(form) }}
+        <div class="col-md-6">
                 <div class="form-group">
             {{ form_row(form.pavadinimas) }}
                 </div>
                 <div class="form-group">
             {{ form_row(form.aprasymas) }}
                 </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+            {{ form_row(form.teacher) }}
+                </div>
                 <div class="form-group">
-            {{ form_row(form.users) }}
+            {{ form_row(form.student) }}
                 </div>
         {{ form_end(form) }}
         </div>

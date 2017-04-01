@@ -51,6 +51,8 @@ class Teacher
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="teacher")
+     * @ORM\JoinTable(name="programa_teacher")
+
      */
     private $teacher;
 

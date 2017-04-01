@@ -6,8 +6,8 @@
 
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Programos
-                <a class="fa fa-plus" href="{{ path('teacher_add') }}"></a></h3>
+                <h3 class="box-title">Mokiniai
+                <a class="fa fa-plus" href="{{ path('student_add') }}"></a></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -20,9 +20,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for teacher in teacher %}
+                    {% for student in student %}
                         <tr data-href="#">
-                            <td>{{ teacher.name }}</a></td>
+                            <td>{{ student.name }}</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\AppBundle;
 use AppBundle\Entity\Teacher;
 use AppBundle\Form\TeacherType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

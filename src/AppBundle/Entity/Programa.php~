@@ -34,10 +34,10 @@ class Programa
     private $aprasymas;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="programa")
-     * @ORM\JoinTable(name="programu_useriai")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Student", inversedBy="student")
+     * @ORM\JoinTable(name="programa_student")
      */
-    private $users;
+    private $student;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Calendar", mappedBy="events")
@@ -252,5 +252,63 @@ class Programa
     public function getTeacher()
     {
         return $this->teacher;
+    }
+
+    /**
+     * Set pteacher
+     *
+     * @param \AppBundle\Entity\Teacher $pteacher
+     *
+     * @return Programa
+     */
+    public function setPteacher(\AppBundle\Entity\Teacher $pteacher = null)
+    {
+        $this->pteacher = $pteacher;
+
+        return $this;
+    }
+
+    /**
+     * Get pteacher
+     *
+     * @return \AppBundle\Entity\Teacher
+     */
+    public function getPteacher()
+    {
+        return $this->pteacher;
+    }
+
+    /**
+     * Add student
+     *
+     * @param \AppBundle\Entity\Student $student
+     *
+     * @return Programa
+     */
+    public function addStudent(\AppBundle\Entity\Student $student)
+    {
+        $this->student[] = $student;
+
+        return $this;
+    }
+
+    /**
+     * Remove student
+     *
+     * @param \AppBundle\Entity\Student $student
+     */
+    public function removeStudent(\AppBundle\Entity\Student $student)
+    {
+        $this->student->removeElement($student);
+    }
+
+    /**
+     * Get student
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStudent()
+    {
+        return $this->student;
     }
 }

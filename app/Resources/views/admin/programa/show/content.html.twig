@@ -13,28 +13,25 @@
                     <thead>
                     <th>{{ 'profile.show.name'|trans }}</th>
                     <th>{{ 'profile.show.surname'|trans }}</th>
-                    <th>{{ 'profile.show.email'|trans }}</th>
                     </thead>
                     <tbody>
-                    {% for user in programa.users %}
+                    {% for student in programa.student %}
                         <tr>
-                            <td>{{ user.name|e }}</td>
-                            <td>{{ user.surname|e }}</td>
-                            <td>{{ user.email|e }}</td>
+                            <td>{{ student.name|e }}</td>
+                            <td>{{ student.surname|e }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                     <tfoot>
                     <th>{{ 'profile.show.name'|trans }}</th>
                     <th>{{ 'profile.show.surname'|trans }}</th>
-                    <th>{{ 'profile.show.email'|trans }}</th>
                     </tfoot>
                 </table>
 
 
                 {% for calendar in programa.events %}
-                    <p>{{ calendar.start | date('Y:m:d') }}
-                    {{ calendar.end | date('Y:m:d') }}
+                    <p>{{ calendar.start | date('Y:m:d H:m') }}
+                    {{ calendar.end | date('Y:m:d H:m') }}
                     {{ calendar.events }}</p>
                 {% endfor %}
 

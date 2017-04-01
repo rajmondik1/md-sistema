@@ -17,14 +17,27 @@ class TeacherType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
             ->add('telnr', TextType::class, [
                 'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
-            ->add('pastabos', TextareaType::class)
+            ->add('pastabos', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Issaugoti',
                 'attr' => [
