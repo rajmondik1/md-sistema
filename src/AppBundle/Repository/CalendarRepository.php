@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class CalendarRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function stats()
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('count(t)');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

@@ -1,0 +1,6 @@
+MY.HELLO: 'Labas, Pasauli!'
+profile.show.name: __profile.show.name
+profile.show.surname: __profile.show.surname
+profile.show.username: __profile.show.username
+profile.show.email: __profile.show.email
+profile.show.lastlogin: __profile.show.lastlogin

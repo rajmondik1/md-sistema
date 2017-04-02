@@ -121,9 +121,59 @@ class UserController extends BaseController
         }
 
         return $this->redirectToRoute('homepage');
-
-
-
     }
+
+
+    /**
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/promote/{user}", name="promote_user")
+     */
+    public function promoteAction(User $user)
+    {
+
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
+
+            $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($user);
+            $user->addRole("ROLE_ADMIN");
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render('default/index.html.twig', [
+
+            ]);
+
+        }
+        return $this->redirectToRoute('homepage');
+    }
+
+    /**
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/demote/{user}", name="demote_user")
+     */
+    public function demoteAction(User $user)
+    {
+
+        if ($this->isGranted('ROLE_ADMIN', null)) {
+
+
+            $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($user);
+            $user->removeRole("ROLE_ADMIN");
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render('default/index.html.twig', [
+
+            ]);
+
+        }
+        return $this->redirectToRoute('homepage');
+    }
+
+
 
 }

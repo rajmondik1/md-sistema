@@ -1,0 +1,36 @@
+{
+  "BOXES" : {
+    "PROGRAM" : "Programų",
+    "USER": "Vartotojų",
+    "STUDENT": "Mokinių",
+    "TEACHER" : "Mokytojų",
+    "MOREINFO" : "Peržiūrėti",
+    "CALENDAR" : "Užsiemimų",
+    "FASTNAV" : "Greita navigacija"
+  },
+  "BUTTON" : {
+    "ADD" : {
+      "TEACHER" : "Pridėti dėstytoją",
+      "STUDENT" : "Pridėti mokinį",
+      "EVENT" : "Pridėti užsiemimą"
+    },
+    "DELETE" : "Ištrinti",
+    "EDIT" : "Redaguoti",
+    "YES" : "Taip",
+    "NO" : "Ne"
+  },
+  "PROGRAMA" : {
+    "TITLE" : "Programos",
+    "NAME" : "Pavadinimas",
+    "STUDENT" : {
+      "NAME" : "Mokinio vardas",
+      "SURNAME" : "Mokinio pavardė"
+    }
+
+  },
+  "USER" : {
+    "NAME" : "Vardas",
+    "SURNAME" : "Pavardė"
+  },
+  "TEACHER" : "Mokytojas"
+}

@@ -17,4 +17,5 @@ class ProgramaRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb->getQuery()->getSingleScalarResult();
     }
+
 }
