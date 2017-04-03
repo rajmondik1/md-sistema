@@ -209,4 +209,28 @@ class Teacher
     {
         return $this->teacher;
     }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     *
+     * @return Teacher
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * Get surname
+     *
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
 }

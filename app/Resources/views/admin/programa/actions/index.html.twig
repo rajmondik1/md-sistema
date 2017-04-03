@@ -1,3 +1,4 @@
+{% trans_default_domain "messages" %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,15 +36,17 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Programos pridejimas
+                {{ edit ? 'PROGRAMA.EDIT.TRUE'|trans : 'PROGRAMA.EDIT.FALSE'|trans }}
                 <br>
 
-                <small>Control panel</small>
+                <small>{{ 'CPANEL'|trans }}</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Pagrindinis</a></li>
-                <li>Programos</li>
-                <li class="active">Programos pridejimas</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'NAVI.MAIN'|trans }}</a></li>
+                <li>{{ 'NAVI.PROGRAMA'|trans }}</li>
+                <li class="active">
+                {{ edit ? 'PROGRAMA.EDIT.TRUE'|trans : 'PROGRAMA.EDIT.FALSE'|trans }}
+                </li>
             </ol>
         </section>
 

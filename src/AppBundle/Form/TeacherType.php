@@ -20,6 +20,11 @@ class TeacherType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
+            ])->add('surname', TextType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
             ->add('email', EmailType::class, [
                 'required' => true,

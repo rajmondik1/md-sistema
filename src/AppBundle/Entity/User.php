@@ -29,54 +29,54 @@ class User extends BaseUser
     protected $surname;
 
     /**
-     * @ORM\Column(name="telnumeris", type="string", length=25)
+     * @ORM\Column(name="telnumeris", type="string", length=25, nullable=true)
      */
     protected $telnumeris;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="gimdata", type="date")
+     * @ORM\Column(name="gimdata", type="date", nullable=true)
      */
     protected $gimdata;
 
     /**
-     * @ORM\Column(name="asmkodas", type="string", length=255)
+     * @ORM\Column(name="asmkodas", type="string", length=255, nullable=true)
      */
     protected $asmkodas;
 
     /**
-     * @ORM\Column(name="klase", type="integer")
+     * @ORM\Column(name="klase", type="integer", nullable=true)
      */
     protected $klase;
 
     /**
-     * @ORM\Column(name="miestas", type="string", length=255)
+     * @ORM\Column(name="miestas", type="string", length=255, nullable=true)
      */
     protected $miestas;
 
     /**
-     * @ORM\Column(name="mokykla", type="string", length=255)
+     * @ORM\Column(name="mokykla", type="string", length=255, nullable=true)
      */
     protected $mokykla;
 
     /**
-     * @ORM\Column(name="tevtelef", type="string", length=255)
+     * @ORM\Column(name="tevtelef", type="string", length=255, nullable=true)
      */
     protected $tevtelef;
 
     /**
-     * @ORM\Column(name="tevuinfo", type="text")
+     * @ORM\Column(name="tevuinfo", type="text", nullable=true)
      */
     protected $tevuinfo;
 
     /**
-     * @ORM\Column(name="mokslometai", type="integer")
+     * @ORM\Column(name="mokslometai", type="integer", nullable=true)
      */
     protected $mokslometai;
 
     /**
-     * @ORM\Column(name="baigimonr", type="string", length=255)
+     * @ORM\Column(name="baigimonr", type="string", length=255, nullable=true)
      */
     protected $baigimonr;
 

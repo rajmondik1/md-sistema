@@ -73,10 +73,13 @@ class ProgramaController extends Controller
             return $this->render('admin/programa/actions/index.html.twig', [
                 'form' => $form->createView(),
                 'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
+                'edit' => false,
             ]);
 
 
         }
+        return $this->redirectToRoute('homepage');
+
     }
 
     /**
@@ -94,8 +97,7 @@ class ProgramaController extends Controller
         $em->flush();
 
 
-        return $this->redirectToRoute('programa_index', [
-        ]);
+        return $this->redirectToRoute('programa_index');
 
         }
 
@@ -130,6 +132,7 @@ class ProgramaController extends Controller
         return $this->render('admin/programa/actions/index.html.twig', [
             'programa' => $programa,
             'form' => $form->createView(),
+            'edit' => true,
         ]);
 
         }

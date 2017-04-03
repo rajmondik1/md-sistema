@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -188,7 +189,17 @@ class Programa
      */
     public function getEvents()
     {
-        return $this->events;
+        $today = new \DateTime();
+        $today->setTime(0,0,0);
+        $endDate = clone $today;
+        $endDate->modify('+1month');
+
+        $criteria = Criteria::create()
+            ->orderBy(['start' => Criteria::ASC])
+            ->where(Criteria::expr()->gte('start', $today))
+            ->andWhere(Criteria::expr()->lte('start', $endDate));
+
+        return $this->events->matching($criteria);
     }
 
     public function __toString()

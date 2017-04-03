@@ -6,19 +6,18 @@
 
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Vartotojai</h3>
+                <h3 class="box-title">{{ 'NAVI.USER'|trans }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="table" class="table table-bordered table-hover table-responsive">
                     <thead>
                     <tr>
-                        <th>{{ 'profile.show.name'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>{{ 'profile.show.surname'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>{{ 'form.username'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>{{ 'form.email'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>Enabled</th>
-                        <th>{{ 'profile.show.lastlogin'|trans({}, 'FOSUserBundle') }}</th>
+                        <th>{{ 'FORM.NAME'|trans}}</th>
+                        <th>{{ 'FORM.SURNAME'|trans}}</th>
+                        <th>{{ 'FORM.USERNAME'|trans}}</th>
+                        <th>{{ 'FORM.EMAIL'|trans}}</th>
+                        <th>{{ 'FORM.LASTLOGIN'|trans}}</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -29,30 +28,30 @@
                             <td>{{ user.surname|e }}</td>
                             <td>{{ user.username|e }}</td>
                             <td>{{ user.email|e }}</td>
-                            <td>{{ user.enabled ? "YES" : "NO"}}</td>
                             <td>{{ user.lastLogin is empty ? "" : user.lastLogin|date("Y-m-d H:m") }}</td>
                             <td class="button-cell">
                                 <a class="delBtn btn btn-warning" >
                                     <span class="glyphicon glyphicon-remove"></span>
-                                    Istrinti
+                                    {{ 'BUTTON.DELETE'|trans }}
                                 </a>
                                 <a class="yesBtn btn btn-success"
                                    href="{{ path('admin_delete', {user: user.id}) }}">
-                                    Taip
+                                    {{ 'BUTTON.YES'|trans }}
                                 </a>
-                                <a class="noBtn btn btn-danger">Ne</a>
+                                <a class="noBtn btn btn-danger">
+                                    {{ 'BUTTON.NO'|trans }}
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                     <tfoot>
                     <tr>
-                        <th>{{ 'profile.show.name'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>{{ 'profile.show.surname'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>{{ 'form.username'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>{{ 'form.email'|trans({}, 'FOSUserBundle') }}</th>
-                        <th>Enabled</th>
-                        <th>{{ 'profile.show.lastlogin'|trans({}, 'FOSUserBundle') }}</th>
+                        <th>{{ 'FORM.NAME'|trans}}</th>
+                        <th>{{ 'FORM.SURNAME'|trans}}</th>
+                        <th>{{ 'FORM.USERNAME'|trans}}</th>
+                        <th>{{ 'FORM.EMAIL'|trans}}</th>
+                        <th>{{ 'FORM.LASTLOGIN'|trans}}</th>
                         <th></th>
                     </tr>
                     </tfoot>

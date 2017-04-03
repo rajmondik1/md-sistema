@@ -1,3 +1,4 @@
+{% trans_default_domain 'messages' %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,11 +39,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Administravimo panele
+                {{ 'CPANEL'|trans }}
+                <small>{{ 'PROGRAMA.TITLE'|trans }}</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Pagrindinis</a></li>
-                <li class="active">Programos</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'NAVI.MAIN'|trans }}</a></li>
+                <li class="active">{{ 'NAVI.PROGRAMA'|trans }}</li>
             </ol>
         </section>
 

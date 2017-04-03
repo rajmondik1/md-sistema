@@ -1,13 +1,22 @@
 {
+  "NAVI" : {
+    "MAIN" : "Pagrindinis",
+    "PROGRAMA" : "Programų sąrašas",
+    "PROGRAMAINFO" : "Programos informacija",
+    "USERINFO" : "Naudotojo informacija",
+    "USER" : "Sistemos naudotojai"
+  },
+
   "BOXES" : {
     "PROGRAM" : "Programų",
-    "USER": "Vartotojų",
+    "USER": "Sistemos naudotojų",
     "STUDENT": "Mokinių",
     "TEACHER" : "Mokytojų",
     "MOREINFO" : "Peržiūrėti",
     "CALENDAR" : "Užsiemimų",
     "FASTNAV" : "Greita navigacija"
   },
+
   "BUTTON" : {
     "ADD" : {
       "TEACHER" : "Pridėti dėstytoją",
@@ -19,18 +28,44 @@
     "YES" : "Taip",
     "NO" : "Ne"
   },
+
+  "FORM" : {
+    "PROGRAMA" : {
+      "NAME" : "Pavadinimas",
+      "DESC" : "Aprašymas",
+      "TEACHER" : "Mokytojas",
+      "STUDENT" : "Mokiniai"
+    },
+    "EDIT" : "Išsaugoti",
+    "ADD" : "Pridėti",
+    "NAME" : "Vardas",
+    "SURNAME" : "Pavardė",
+    "USERNAME" : "Naudotojo vardas",
+    "EMAIL" : "El. paštas",
+    "LASTLOGIN" : "Paskutinis prisijungimas"
+  },
+
+  "CPANEL" : "Valdymo skydelis",
+
+  "USER" : {
+    "NAME" : "Vardas",
+    "SURNAME" : "Pavardė"
+  },
+  "TEACHER" : {
+    "NAME" : "Mokytojas"
+  },
   "PROGRAMA" : {
-    "TITLE" : "Programos",
+    "TITLE" : "Programų sąrašas",
+    "INFO" : "Programos informacija",
+    "EDIT" : {
+      "TRUE": "Programos redagavimas",
+      "FALSE": "Programos pridėjimas"
+    },
     "NAME" : "Pavadinimas",
     "STUDENT" : {
       "NAME" : "Mokinio vardas",
       "SURNAME" : "Mokinio pavardė"
     }
+  }
 
-  },
-  "USER" : {
-    "NAME" : "Vardas",
-    "SURNAME" : "Pavardė"
-  },
-  "TEACHER" : "Mokytojas"
 }
