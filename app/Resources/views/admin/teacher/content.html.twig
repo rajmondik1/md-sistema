@@ -21,8 +21,8 @@
                     </thead>
                     <tbody>
                     {% for teacher in teacher %}
-                        <tr data-href="#">
-                            <td>{{ teacher.name }}</a></td>
+                        <tr data-href="{{ path('teacher_show', {teacher: teacher.id}) }}">
+                            <td >{{ teacher.name }}</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

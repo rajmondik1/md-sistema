@@ -1,4 +1,4 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% trans_default_domain "messages" %}
 
 
 <!DOCTYPE html>
@@ -38,40 +38,42 @@
 <div class="login-box">
 
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">{{ 'FORM.LOGIN.START'|trans }}</p>
 
         <form action="{{ path("fos_user_security_check") }}" method="post">
             {% if csrf_token %}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
             {% endif %}
             <div class="form-group has-feedback">
-                <label for="username">{{ 'security.login.username'|trans }}</label>
+                <label for="username">{{ 'FORM.USERNAME'|trans }}</label>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="El. pastas arba naudotojo vardas" />
+                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'FORM.EMAIL'|trans }}  {{ 'FORM.OR'|trans }}  {{ 'FORM.USERNAME'|trans }}" />
 
             </div>
             <div class="form-group has-feedback">
-                <label for="password">{{ 'security.login.password'|trans }}</label>
+                <label for="password">{{ 'FORM.PASSWORD'|trans }}</label>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="Slaptazodis" />
+                <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="{{ 'FORM.PASSWORD'|trans }}" />
             </div>
             <div class="row">
                 <div class="col-xs-8">
                             <input class="checkbox" type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                            <label for="remember_me">{{ 'FORM.REMEMBER_ME'|trans }}</label>
 
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <input class="btn btn-primary btn-block btn-flat" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    <input class="btn btn-primary btn-block btn-flat" type="submit" id="_submit" name="_submit" value="{{ 'FORM.LOGIN.SUBMIT'|trans }}" />
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
 
-        <a href="{{ path('fos_user_resetting_request') }}">I forgot my password</a><br>
-        <a href="{{ path('fos_user_registration_register') }}" class="text-center">Register</a>
+        {#
+        <a href="{{ path('fos_user_resetting_request') }}">{{ 'FORM.LOGIN.FORGOT_PASS'|trans }}</a><br>
+        #}
+        <a href="{{ path('fos_user_registration_register') }}" class="text-center">{{ 'FORM.REGISTER.SUBMIT'|trans }}</a>
 
     </div>
     <!-- /.login-box-body -->

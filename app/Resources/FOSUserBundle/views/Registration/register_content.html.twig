@@ -1,4 +1,4 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% trans_default_domain "messages" %}
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 
@@ -35,32 +35,30 @@
 
 
     <div class="register-box-body">
-        <p class="login-box-msg">Register a new membership</p>
+        <p class="login-box-msg">{{ 'FORM.REGISTER.START'|trans }}</p>
 
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
     <div>
 
-        {{ form_label(form.name) }}
-        {{ form_widget(form.name) }}
-
-        {{ form_label(form.surname) }}
-        {{ form_widget(form.surname) }}
-
-        {{ form_label(form.username) }}
-        {{ form_widget(form.username) }}
-        {{ form_errors(form.username) }}
-
-        {{ form_label(form.email) }}
-        {{ form_widget(form.email) }}
-        {{ form_errors(form.email) }}
-
-        {{ form_label(form.plainPassword.first) }}
-        {{ form_widget(form.plainPassword.first) }}
-        {{ form_errors(form.plainPassword.first) }}
-
-        {{ form_label(form.plainPassword.second) }}
-        {{ form_widget(form.plainPassword.second) }}
+        <div class="form-group" >
+        {{ form_row(form.name, { 'class' : 'form-control' , 'label' : 'FORM.NAME'|trans  } ) }}
+        </div>
+        <div class="form-group" >
+        {{ form_row(form.surname, { 'class' : 'form-control' ,  'label' : 'FORM.SURNAME'|trans  }) }}
+        </div>
+        <div class="form-group" >
+        {{ form_row(form.username, { 'class' : 'form-control' ,  'label' : 'FORM.USERNAME'|trans  }) }}
+        </div>
+        <div class="form-group" >
+        {{ form_row(form.email, { 'class' : 'form-control' ,  'label' : 'FORM.EMAIL'|trans  }) }}
+        </div>
+        <div class="form-group" >
+        {{ form_row(form.plainPassword.first, { 'class' : 'form-control' ,  'label' : 'FORM.PASSWORD'|trans  }) }}
+        </div>
+        <div class="form-group" >
+        {{ form_row(form.plainPassword.second, { 'class' : 'form-control' ,  'label' : 'FORM.PASSWORD2'|trans  }) }}
+        </div>
 
 
 
@@ -68,13 +66,13 @@
 
         <br>
         <div>
-            <input class="btn btn-primary btn-block btn-flat" type="submit" value="{{ 'registration.submit'|trans }}" />
+            <input class="btn btn-primary btn-block btn-flat" type="submit" value="{{ 'FORM.REGISTER.SUBMIT'|trans }}" />
         </div>
         <br>
 
         {{ form_end(form) }}
 
-        <a href="login.html" class="text-center">I already have a membership</a>
+        <a href="{{ path('fos_user_security_login') }}" class="text-center">{{ 'FORM.REGISTER.ALREADY_REGISTERED'|trans }}</a>
     </div>
     <!-- /.form-box -->
 </div>

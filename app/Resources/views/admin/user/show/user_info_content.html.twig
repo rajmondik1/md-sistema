@@ -1,4 +1,4 @@
-
+{% trans_default_domain "messages" %}
 
 <!-- Main row -->
 <div class="row">
@@ -14,31 +14,41 @@
                 <table class="table table-responsive">
                     <tbody>
                     <tr>
-                        <td>{{ 'profile.show.name'|trans }}</td>
+                        <td>{{ 'FORM.NAME'|trans }}</td>
                         <td>{{ user.name }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'profile.show.surname'|trans }}</td>
+                        <td>{{ 'FORM.SURNAME'|trans }}</td>
                         <td>{{ user.surname }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'profile.show.username'|trans }}</td>
+                        <td>{{ 'FORM.USERNAME'|trans }}</td>
                         <td>{{ user.username }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'profile.show.email'|trans }}</td>
+                        <td>{{ 'FORM.EMAIL'|trans }}</td>
                         <td>{{ user.email }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'profile.show.lastlogin'|trans }}</td>
+                        <td>{{ 'FORM.LASTLOGIN'|trans }}</td>
                         <td>{{ user.lastLogin is empty ? "" : user.lastLogin|date("Y-m-d H:m") }}</td>
                     </tr>
                     </tbody>
                 </table>
             <div class="panel-footer">
-                <td> <a class="btn btn-danger" href="{{ path('admin_delete', {user: user.id}) }}">
+                <td> <a class="delBtn btn btn-danger">
                         <span class="glyphicon glyphicon-remove"></span>
-                        Istrinti
+                        {{ 'BUTTON.DELETE'|trans }}
+                    </a>
+                    <a class="yesBtn btn btn-success"
+                       href="{{ path('admin_delete', {user: user.id}) }}">
+                        {{ 'BUTTON.YES'|trans }}
+                    </a>
+                    <a class="noBtn btn btn-danger">
+                        {{ 'BUTTON.NO'|trans }}
+                    </a>
+                    <a class="btn btn-warning">
+                        {{ 'BUTTON.EDIT'|trans }}
                     </a>
                 </td>
 

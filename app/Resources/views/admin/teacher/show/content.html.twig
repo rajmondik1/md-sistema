@@ -11,50 +11,35 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="table" class="table table-bordered table-hover table-responsive">
-                    <thead>
-                    <th>{{ 'PROGRAMA.STUDENT.NAME'|trans }}</th>
-                    <th>{{ 'PROGRAMA.STUDENT.SURNAME'|trans }}</th>
-                    </thead>
-                    <tbody>
-                    {% for student in programa.student %}
-                        <tr>
-                            <td>{{ student.name|e }}</td>
-                            <td>{{ student.surname|e }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                    <tfoot>
-                    <th>{{ 'PROGRAMA.STUDENT.NAME'|trans }}</th>
-                    <th>{{ 'PROGRAMA.STUDENT.SURNAME'|trans }}</th>
-                    </tfoot>
+            <thead>
+
+            </thead>
+            <tbody>
+                    <td>
+                    {{ teacher.name }}
+                    </td>
+            </tbody>
+<tfoot>
+
+</tfoot>
+
                 </table>
-
-
-                {% for calendar in programa.events %}
-                    <p>{{ calendar.start | date('Y:m:d H:m') }}
-                    {{ calendar.end | date('Y:m:d H:m') }}
-                    {{ calendar.events }}</p>
-                {% endfor %}
-
-                <td class="button-cell">
                     <a class="delBtn btn btn-warning">
                         <span>{{ 'BUTTON.DELETE'|trans }}</span>
                     </a>
                     <a class="yesBtn btn btn-success"
-                       href="{{ path("programa_delete", {programa : programa.id}) }}">
+                       href="">
                         {{ 'BUTTON.YES'|trans }}
                     </a>
                     <a class="noBtn btn btn-danger">
                         {{ 'BUTTON.NO'|trans }}
                     </a>
-                </td>
-                <td>
                     <a class="btn btn-warning"
-                       href="{{ path("programa_edit", {programa: programa.id}) }}">
+                       href="">
                         {{ 'BUTTON.EDIT'|trans }}
                     </a>
-                </td>
             </div>
+        </div>
     </section>
 </div>
 <!-- /.row (main row) -->

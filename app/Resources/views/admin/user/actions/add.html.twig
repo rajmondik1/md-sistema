@@ -1,11 +1,30 @@
-<div id="wrapper">
-    <div id="container">
-        {#<h1>{{ edit ? 'Programos redagavimas' : 'Nauja programa'}}</h1>
-#}
+{% trans_default_domain "messages" %}
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: black;
+    }
+</style>
+
+<div class="box-body">
+
+    <div class="row">
         {{ form_start(form) }}
+        <div class="col-md-12">
+            <div class="form-group">
+            {{ form_row(form.name, { 'label' : 'FORM.NAME'|trans}) }}
+                </div>
+                <div class="form-group">
+            {{ form_row(form.surname, { 'label' : 'FORM.SURNAME'|trans}) }}
+                </div>
 
-        {{ form_widget(form) }}
+                <div class="form-group">
+            {{ form_row(form.username, { 'label' : 'FORM.USERNAME'|trans}) }}
+                </div>
+                <div class="form-group">
+            {{ form_row(form.email, { 'label' : 'FORM.EMAIL'|trans}) }}
+                </div>
+            {{ form_row(form.save, { 'label' : 'FORM.EDIT'|trans }) }}
         {{ form_end(form) }}
-
         </div>
     </div>
+</div>

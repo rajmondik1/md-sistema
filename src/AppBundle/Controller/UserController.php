@@ -87,7 +87,7 @@ class UserController extends BaseController
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('admin/user/actions/add.html.twig', [
+        return $this->render('admin/user/actions/index.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);

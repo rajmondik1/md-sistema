@@ -3,8 +3,9 @@
     "MAIN" : "Pagrindinis",
     "PROGRAMA" : "Programų sąrašas",
     "PROGRAMAINFO" : "Programos informacija",
-    "USERINFO" : "Naudotojo informacija",
-    "USER" : "Sistemos naudotojai"
+    "USER" : "Sistemos naudotojai",
+    "USER_EDIT" : "Naudotojo redagavimas",
+    "USERINFO" : "Informacija apie naudotoją"
   },
 
   "BOXES" : {
@@ -30,11 +31,25 @@
   },
 
   "FORM" : {
+    "OR" : "arba",
+    "REGISTER" : {
+      "START" : "Naujo naudotojo registracija",
+      "SUBMIT" : "Registruotis",
+      "ALREADY_REGISTERED" : "Turi paskyrą? Prisijunk!"
+    },
+    "LOGIN" : {
+      "START" : "Prisijunkite norint pradėti",
+      "SUBMIT" : "Prisijungti",
+      "FORGOT_PASS" : "Pamiršau slaptažodį"
+    },
     "PROGRAMA" : {
       "NAME" : "Pavadinimas",
       "DESC" : "Aprašymas",
       "TEACHER" : "Mokytojas",
       "STUDENT" : "Mokiniai"
+    },
+    "USER" : {
+      "EDIT" : "Vartotojo redagavimas"
     },
     "EDIT" : "Išsaugoti",
     "ADD" : "Pridėti",
@@ -42,7 +57,10 @@
     "SURNAME" : "Pavardė",
     "USERNAME" : "Naudotojo vardas",
     "EMAIL" : "El. paštas",
-    "LASTLOGIN" : "Paskutinis prisijungimas"
+    "LASTLOGIN" : "Paskutinis prisijungimas",
+    "PASSWORD" : "Slaptažodis",
+    "PASSWORD2" : "Pakartoti slaptažodį",
+    "REMEMBER_ME" : "Prisiminti mane"
   },
 
   "CPANEL" : "Valdymo skydelis",

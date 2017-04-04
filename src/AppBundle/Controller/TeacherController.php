@@ -124,13 +124,21 @@ class TeacherController extends Controller
         }
         return $this->redirectToRoute('homepage');
     }
-    /*
-    public function showAction()
+
+    /**
+     * @param Teacher $teacher
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/{teacher}", name="teacher_show")
+     */
+    public function showAction(Teacher $teacher)
     {
         if ($this->isGranted('ROLE_ADMIN', null))
         {
-            return $this->render()
+            return $this->render(':admin/teacher/show:index.html.twig', [
+                'teacher' => $teacher
+            ]);
         }
+        return $this->redirectToRoute('homepage');
     }
-    */
+
 }
