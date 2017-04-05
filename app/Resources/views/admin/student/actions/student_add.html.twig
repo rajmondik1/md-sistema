@@ -1,3 +1,5 @@
+{% trans_default_domain "messages" %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,11 +52,67 @@
                                 <div class="col-md-12">
                             {{ form_start(form) }}
 
+                                    <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        {{ form_row(form.name, { 'label' : 'FORM.NAME'|trans }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.surname, { 'label' : 'FORM.SURNAME'|trans }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.telnumeris, { 'label' : 'FORM.PHONE'|trans }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.gimdata, { 'label' : 'FORM.BIRTH'|trans }) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_row(form.mokslometai, { 'label' : 'FORM.USER.MOKSLOMETAI'|trans }) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_row(form.klase, { 'label' : 'FORM.USER.KLASE'|trans }) }}
+                                    </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+
+
+
+                                    <div class="form-group">
+                                        {{ form_row(form.asmkodas, { 'label' : 'FORM.USER.ASMK'|trans }) }}
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        {{ form_row(form.mokykla, { 'label' : 'FORM.USER.SCHOOL'|trans }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.tevtelef, { 'label' : 'FORM.USER.TEVTELEF'|trans }) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_row(form.tevuinfo, { 'label' : 'FORM.USER.PARENTINFO'|trans }) }}
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        {{ form_row(form.baigimonr, { 'label' : 'FORM.USER.BAIGIMONR'|trans }) }}
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ edit ?
+                                        form_row(form.save, { 'label' : 'FORM.EDIT'|trans})
+                                        :
+                                        form_row(form.save, { 'label' : 'FORM.ADD'|trans})
+                                        }}
+                                    </div>
 
                             {{ form_end(form) }}
-
-
-
                                 </div>
                             </div>
                         </div>

@@ -47,7 +47,7 @@
                     <a class="noBtn btn btn-danger">
                         {{ 'BUTTON.NO'|trans }}
                     </a>
-                    <a class="btn btn-warning">
+                    <a href="{{ path('user_edit', {user: user.id}) }}" class="btn btn-warning">
                         {{ 'BUTTON.EDIT'|trans }}
                     </a>
                 </td>

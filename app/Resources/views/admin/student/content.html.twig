@@ -21,7 +21,7 @@
                     </thead>
                     <tbody>
                     {% for student in student %}
-                        <tr data-href="#">
+                        <tr data-href="{{ path('student_info', {student: student.id}) }}">
                             <td>{{ student.name }}</a></td>
                         </tr>
                     {% endfor %}

@@ -11,8 +11,6 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTable-->
-
-
     <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
@@ -39,17 +37,18 @@
         <section class="content-header">
             <h1>
                 {{ 'CPANEL'|trans }}
-                <small>{{ 'NAVI.TEACHER'|trans }}</small>
+                <small>{{ 'NAVI.TEACHERINFO'|trans }}</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'NAVI.MAIN'|trans }}</a></li>
-                <li class="active">{{ 'NAVI.TEACHER'|trans }}</li>
+                <li>{{ 'NAVI.TEACHER'|trans }}</li>
+                <li class="active">{{ 'NAVI.TEACHERINFO'|trans }}</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-            {{ include('admin/teacher/content.html.twig') }}
+            {{ include('admin/student/show/content.html.twig') }}
 
         </section>
         <!-- /.content -->
@@ -61,7 +60,7 @@
 
 
 
-   {{ include('admin/admin_footer.html.twig') }}
+    {{ include('admin/admin_footer.html.twig') }}
 
     <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
@@ -70,39 +69,34 @@
 <!-- ./wrapper -->
 
 
-
-<!-- jQuery 2.2.3 -->
-
+<!-- jQuery 2.2.4 -->
 <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
-
-<!-- jQuery UI 1.11.4 -->
-
+<!-- Bootstrap -->
 <script
-        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<!-- Fastclick -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js"></script>
+
+<!-- Slimscroll -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
+<!-- DataTables -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+
+<script src="{{ asset('dist/js/app.min.js') }}"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
-<!-- Bootstrap 3.3.6 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- DataTables -->
-<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-<!-- SlimScroll -->
-<script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
 
 <script>
-
-    // !!!!!!!!!!!!!!!!!!
 
 
     $('tr[data-href] td').not('.button-cell').on("click", function() {
@@ -126,10 +120,32 @@
     });
 </script>
 
+<script>
+    $('.yesBtn, .noBtn').hide();
 
 
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/app.min.js') }}"></script>
+    $('.delBtn').on('click' ,function () {
+
+        var parent = $(this).parent();
+
+        $(this).fadeOut( function () {
+            parent.find('.yesBtn').fadeIn();
+            parent.find('.noBtn').fadeIn();
+        });
+
+    });
+    $('.noBtn').on('click', function () {
+        var parent = $(this).parent();
+
+        parent.find('.yesBtn').fadeOut();
+        $(this).fadeOut(function () {
+            parent.find('.delBtn').fadeIn();
+        });
+    });
+
+    //BTN SCRIPT --Coming soon
+</script>
+
 
 </body>
 </html>

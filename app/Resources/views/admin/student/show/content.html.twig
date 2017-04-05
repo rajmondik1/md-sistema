@@ -6,8 +6,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">
-                    {{ teacher.name }}
-                    {{ teacher.surname }}
+
                 </h3>
             </div>
             <!-- /.box-header -->
@@ -16,20 +15,17 @@
             <tbody>
             <tr>
                 <td>{{ 'FORM.NAME'|trans }}  {{ 'FORM.SURNAME'|trans }}</td>
-                <td>{{ teacher.name }}
-                {{ teacher.surname }}</td>
+                <td>{{ student.name }}
+                {{ student.surname }}</td>
             </tr>
             <tr>
                 <td>{{ 'FORM.EMAIL'|trans }}</td>
-                <td>{{ teacher.email }}</td>
             </tr>
             <tr>
                 <td>{{ 'FORM.PHONE'|trans }}</td>
-                <td>{{ teacher.telnr }}</td>
             </tr>
             <tr>
                 <td>{{ 'FORM.ADDITIONAL'|trans }}</td>
-                <td>{{ teacher.pastabos }}</td>
             </tr>
             </tbody>
                 </table>
@@ -40,14 +36,14 @@
                     <span>{{ 'BUTTON.DELETE'|trans }}</span>
                 </a>
                 <a class="yesBtn btn btn-success"
-                   href="{{ path('teacher_delete', {teacher: teacher.id}) }}">
+                   href="">
                     {{ 'BUTTON.YES'|trans }}
                 </a>
                 <a class="noBtn btn btn-danger">
                     {{ 'BUTTON.NO'|trans }}
                 </a>
                 <a class="btn btn-warning"
-                   href="{{ path('teacher_edit', {teacher: teacher.id}) }}">
+                   href="{{ path('student_edit', {student: student.id}) }}">
                     {{ 'BUTTON.EDIT'|trans }}
                 </a>
             </div>

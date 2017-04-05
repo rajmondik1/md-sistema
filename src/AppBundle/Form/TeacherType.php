@@ -44,7 +44,6 @@ class TeacherType extends AbstractType
                 ]
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Issaugoti',
                 'attr' => [
                     'class' => 'btn btn-default',
                 ]

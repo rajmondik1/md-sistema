@@ -62,6 +62,53 @@ class StudentController extends Controller
 
             return $this->render(':admin/student/actions:student_add.html.twig', [
                 'form' => $form->createView(),
+                'edit' => false
+            ]);
+        }
+        return $this->redirectToRoute('homepage');
+    }
+
+    /**
+     * @param Request $request
+     * @param Student $student
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/edit/{student}", name="student_edit")
+     */
+    public function editAction(Request $request, Student $student)
+    {
+        if($this->isGranted('ROLE_ADMIN', null)){
+            $form = $this->createForm(StudentType::class, $student);
+
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+
+                return $this->redirectToRoute('student_index');
+            }
+
+            return $this->render(':admin/student/actions:student_add.html.twig', [
+                'student' => $student,
+                'form' => $form->createView(),
+                'edit' => true
+            ]);
+        }
+        return $this->redirectToRoute('homepage');
+    }
+
+    /**
+     * @param Student $student
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/{student}", name="student_info")
+     */
+    public function showAction(Student $student)
+    {
+        if($this->isGranted('ROLE_ADMIN', null))
+        {
+            return $this->render(':admin/student/show:index.html.twig', [
+                'student' => $student
             ]);
         }
         return $this->redirectToRoute('homepage');

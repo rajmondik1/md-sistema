@@ -67,7 +67,7 @@ class TeacherController extends Controller
 
             return $this->render('admin/teacher/actions/teacher_add.html.twig', [
                 'form' => $form->createView(),
-                'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
+                'edit' => false
             ]);
         }
         return $this->redirectToRoute('homepage');
@@ -119,7 +119,8 @@ class TeacherController extends Controller
 
             return $this->render(':admin/teacher/actions:teacher_add.html.twig', [
                 'teacher' => $teacher,
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'edit' => true
             ]);
         }
         return $this->redirectToRoute('homepage');

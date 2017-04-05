@@ -40,7 +40,7 @@ class StudentType extends AbstractType
                     'style' => 'width:100%'
                 ]
             ])
-            ->add('asmkodas', IntegerType::class, [
+            ->add('asmkodas', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ]

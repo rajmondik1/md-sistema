@@ -5,7 +5,9 @@
     "PROGRAMAINFO" : "Programos informacija",
     "USER" : "Sistemos naudotojai",
     "USER_EDIT" : "Naudotojo redagavimas",
-    "USERINFO" : "Informacija apie naudotoją"
+    "USERINFO" : "Informacija apie naudotoją",
+    "TEACHER" : "Mokytojai",
+    "TEACHERINFO" : "Informacija apie mokytoją"
   },
 
   "BOXES" : {
@@ -49,7 +51,14 @@
       "STUDENT" : "Mokiniai"
     },
     "USER" : {
-      "EDIT" : "Vartotojo redagavimas"
+      "EDIT" : "Vartotojo redagavimas",
+      "MOKSLOMETAI" : "Mokslo metai",
+      "KLASE" : "Klasė",
+      "ASMK" : "Asmens kodas",
+      "SCHOOL" : "Mokykla",
+      "TEVTELEF" : "Tėvų telefono numeris",
+      "PARENTINFO" : "Informacija apie tėvus",
+      "BAIGIMONR" : "Baigimo atestato numeris"
     },
     "EDIT" : "Išsaugoti",
     "ADD" : "Pridėti",
@@ -60,7 +69,10 @@
     "LASTLOGIN" : "Paskutinis prisijungimas",
     "PASSWORD" : "Slaptažodis",
     "PASSWORD2" : "Pakartoti slaptažodį",
-    "REMEMBER_ME" : "Prisiminti mane"
+    "REMEMBER_ME" : "Prisiminti mane",
+    "PHONE" : "Telefono numeris",
+    "ADDITIONAL" : "Pastabos",
+    "BIRTH" : "Gimimo data"
   },
 
   "CPANEL" : "Valdymo skydelis",
@@ -83,7 +95,8 @@
     "STUDENT" : {
       "NAME" : "Mokinio vardas",
       "SURNAME" : "Mokinio pavardė"
-    }
+    },
+    "EVENTS" : "Artimiausi užsiemimai"
   }
 
 }

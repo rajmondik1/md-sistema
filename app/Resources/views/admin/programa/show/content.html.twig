@@ -9,6 +9,29 @@
                     {{ 'TEACHER.NAME'|trans }}:  {{ programa.teacher.name }} {{ programa.teacher.surname }}
                 </h3>
                 <p>{{ programa.aprasymas }}</p>
+
+
+                <div class="pull-right">
+                <td class="button-cell">
+                    <a class="delBtn btn btn-warning">
+                        <span>{{ 'BUTTON.DELETE'|trans }}</span>
+                    </a>
+                    <a class="yesBtn btn btn-success"
+                       href="{{ path("programa_delete", {programa : programa.id}) }}">
+                        {{ 'BUTTON.YES'|trans }}
+                    </a>
+                    <a class="noBtn btn btn-danger">
+                        {{ 'BUTTON.NO'|trans }}
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-warning"
+                       href="{{ path("programa_edit", {programa: programa.id}) }}">
+                        {{ 'BUTTON.EDIT'|trans }}
+                    </a>
+                </td>
+                </div>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -32,30 +55,35 @@
                 </table>
 
 
+                    <div class="page-header">
+                        <h1><small>{{ 'PROGRAMA.EVENTS'|trans }}</small></h1>
+                    </div>
+<ul>
                 {% for calendar in programa.events %}
-                    <p>{{ calendar.start | date('Y:m:d H:m') }}
-                    {{ calendar.end | date('Y:m:d H:m') }}
-                    {{ calendar.events }}</p>
-                {% endfor %}
+   <li>
 
-                <td class="button-cell">
-                    <a class="delBtn btn btn-warning">
-                        <span>{{ 'BUTTON.DELETE'|trans }}</span>
-                    </a>
-                    <a class="yesBtn btn btn-success"
-                       href="{{ path("programa_delete", {programa : programa.id}) }}">
-                        {{ 'BUTTON.YES'|trans }}
-                    </a>
-                    <a class="noBtn btn btn-danger">
-                        {{ 'BUTTON.NO'|trans }}
-                    </a>
-                </td>
-                <td>
-                    <a class="btn btn-warning"
-                       href="{{ path("programa_edit", {programa: programa.id}) }}">
-                        {{ 'BUTTON.EDIT'|trans }}
-                    </a>
-                </td>
+                    <div>
+
+
+{% if calendar.start|date('Y:m:d') == calendar.end|date('Y:m:d') %}
+    <h5>
+    {{ calendar.start | date('Y-m-d H:m') }}
+    -
+    {{ calendar.end | date('H:m') }}
+    </h5>
+    {% else %}
+                    <h5>
+                        {{ calendar.start | date('Y:m:d H:m') }}
+                        {{ calendar.end | date('Y:m:d H:m') }}
+                    </h5>
+
+{% endif %}
+
+                    </div>
+   </li>
+                {% endfor %}
+</ul>
+
             </div>
     </section>
 </div>

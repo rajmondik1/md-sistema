@@ -33,12 +33,15 @@ class ProgramaType extends AbstractType
                     'rows' => '5'
                 ]
             ])
+
+            // name + surname??
+
             ->add('teacher', EntityType::class, [
                 'class' => 'AppBundle\Entity\Teacher',
                 'choice_label' => 'name',
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
             ])
             ->add('student', EntityType::class, [
                 'class' => Student::class,
