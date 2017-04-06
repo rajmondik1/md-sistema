@@ -45,9 +45,9 @@ class CalendarType extends AbstractType
             ])
             ->add('repeat', ChoiceType::class, [
                 'choices' => [
-                    'Kas menesi' => 'month',
-                    'Kas savaite' => 'week',
-                    'Kasdien' => 'day'
+                    'FORM.CALENDAR.MONTH' => 'month',
+                    'FORM.CALENDAR.WEEK' => 'week',
+                    'FORM.CALENDAR.DAY' => 'day'
                 ],
                 'mapped' => false,
                 'attr' => [
@@ -75,7 +75,10 @@ class CalendarType extends AbstractType
                 'mapped' => false
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Issaugoti'
+                'label' => 'Išsaugoti',
+                'attr' => [
+                    'class' => 'btn btn-default'
+                ]
             ])
 
         ;

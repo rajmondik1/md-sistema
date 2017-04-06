@@ -52,29 +52,45 @@
                                 <div class="col-md-12">
                             {{ form_start(form) }}
                                     <div class="form-group">
-                                    {{ form_row(form.start) }}
+                                    {{ form_row(form.start, { 'label' : 'FORM.CALENDAR.START' } ) }}
                                     </div>
                                     <div class="form-group">
-                                    {{ form_row(form.end) }}
+                                    {{ form_row(form.end, { 'label' : 'FORM.CALENDAR.END' }) }}
                                     </div>
                                     <div class="form-group">
-                                    {{ form_row(form.events) }}
+                                    {{ form_row(form.events, { 'label' : 'FORM.CALENDAR.PROGRAMA' }) }}
                                     </div>
                                     <div class="form-group">
-                                    {{ form_row(form.repeat) }}
+                                    {{ form_row(form.repeat, { 'label' : 'FORM.CALENDAR.REPEAT' }) }}
                                     </div>
                                     <div class="form-group">
-                                    {{ form_row(form.hm) }}
+                                    {{ form_row(form.hm, { 'label' : 'FORM.CALENDAR.HM' }) }}
                                     </div>
 
 
-
-                            {{ form_end(form) }}
 
 
 
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="box-footer">
+                        {% if edit == true %}
+                                        <div class="pull-right">
+                                            <a class="delBtn btn btn-warning">
+                                                <span>{{ 'BUTTON.DELETE'|trans }}</span>
+                                            </a>
+                                            <a class="yesBtn btn btn-success"
+                                               href="{{ path("calendar_delete", {calendar : calendar.id}) }}">
+                                                {{ 'BUTTON.YES'|trans }}
+                                            </a>
+                                            <a class="noBtn btn btn-danger">
+                                                {{ 'BUTTON.NO'|trans }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                            {{ form_end(form) }}
                         </div>
                     </div>
                 </div>
@@ -85,12 +101,10 @@
 
 
 
-
    {{ include('admin/admin_footer.html.twig') }}
 
     <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
@@ -131,6 +145,32 @@
     $('.datepicker').datetimepicker({
         autoclose: true
     });
+</script>
+
+<script>
+    $('.yesBtn, .noBtn').hide();
+
+
+    $('.delBtn').on('click' ,function () {
+
+        var parent = $(this).parent();
+
+        $(this).fadeOut( function () {
+            parent.find('.yesBtn').fadeIn();
+            parent.find('.noBtn').fadeIn();
+        });
+
+    });
+    $('.noBtn').on('click', function () {
+        var parent = $(this).parent();
+
+        parent.find('.yesBtn').fadeOut();
+        $(this).fadeOut(function () {
+            parent.find('.delBtn').fadeIn();
+        });
+    });
+
+    //BTN SCRIPT --Coming soon
 </script>
 
 </body>

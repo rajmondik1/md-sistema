@@ -6,7 +6,8 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">
-
+                    {{ student.name }}
+                    {{ student.surname }}
                 </h3>
             </div>
             <!-- /.box-header -->
@@ -20,12 +21,42 @@
             </tr>
             <tr>
                 <td>{{ 'FORM.EMAIL'|trans }}</td>
+                <td>{{ student.email }}</td>
             </tr>
             <tr>
                 <td>{{ 'FORM.PHONE'|trans }}</td>
+                <td>{{ student.telnumeris }}</td>
             </tr>
             <tr>
-                <td>{{ 'FORM.ADDITIONAL'|trans }}</td>
+                <td>{{ 'FORM.BIRTH'|trans }}</td>
+                <td>{{ student.gimdata|date("Y-m-d") }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'FORM.USER.ASMK'|trans }}</td>
+                <td>{{ student.asmkodas }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'FORM.USER.KLASE'|trans }}</td>
+                <td>{{ student.klase }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'FORM.USER.SCHOOL'|trans }}</td>
+                <td>{{ student.mokykla }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'FORM.USER.TEVTELEF'|trans }}</td>
+                <td>{{ student.tevtelef }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'FORM.ADDITIONAL'|trans }}
+                    {{ 'FORM.OR'|trans }}
+                    {{ 'FORM.USER.PARENTINFO'|trans }}
+                </td>
+                <td>{{ student.tevuinfo }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'FORM.USER.BAIGIMONR'|trans }}</td>
+                <td>{{ student.baigimonr }}</td>
             </tr>
             </tbody>
                 </table>

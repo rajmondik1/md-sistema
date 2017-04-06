@@ -7,7 +7,11 @@
     "USER_EDIT" : "Naudotojo redagavimas",
     "USERINFO" : "Informacija apie naudotoją",
     "TEACHER" : "Mokytojai",
-    "TEACHERINFO" : "Informacija apie mokytoją"
+    "TEACHERINFO" : "Informacija apie mokytoją",
+    "STUDENT" : "Mokiniai",
+    "STUDENTINFO" : "Informacija apie mokinį",
+    "CALENDAR" : "Kalendorius"
+
   },
 
   "BOXES" : {
@@ -50,6 +54,16 @@
       "TEACHER" : "Mokytojas",
       "STUDENT" : "Mokiniai"
     },
+    "CALENDAR" : {
+      "START" : "Pradžios data ir laikas",
+      "END" : "Pabaigos data ir laikas",
+      "PROGRAMA" : "Programa",
+      "REPEAT" : "Kaip dažnai kartoti",
+      "HM" : "Kiek kartų kartoti",
+      "DAY" : "Kasdien",
+      "WEEK" : "Kas savaitę",
+      "MONTH" : "Kas mėnesį"
+    },
     "USER" : {
       "EDIT" : "Vartotojo redagavimas",
       "MOKSLOMETAI" : "Mokslo metai",
@@ -82,7 +96,17 @@
     "SURNAME" : "Pavardė"
   },
   "TEACHER" : {
-    "NAME" : "Mokytojas"
+    "NAME" : "Mokytojas",
+    "EDIT" : {
+      "TRUE" : "Mokytojo redagavimas",
+      "FALSE" : "Naujo mokytojo pridėjimas"
+    }
+  },
+  "STUDENT" : {
+    "EDIT" : {
+      "TRUE" : "Mokinio redagavimas",
+      "FALSE" : "Naujo mokinio pridėjimas"
+    }
   },
   "PROGRAMA" : {
     "TITLE" : "Programų sąrašas",

@@ -43,6 +43,13 @@ class Student
     private $telnumeris;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="gimdata", type="date")

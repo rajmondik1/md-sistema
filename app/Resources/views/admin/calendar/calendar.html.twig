@@ -11,8 +11,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTable-->
-    <link href='{{ asset('fullcalendar.min.css') }}' rel='stylesheet' />
-    <link href='{{ asset('fullcalendar.print.min.css') }}' rel='stylesheet' media='print' />
+    <link href='{{ asset('plugins/fullcalendar/new/fullcalendar.min.css') }}' rel='stylesheet' />
+    <link href='{{ asset('plugins/fullcalendar/new/fullcalendar.print.min.css') }}' rel='stylesheet' media='print' />
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -37,12 +37,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>Control panel</small>
+                {{ 'CPANEL'|trans }}
+                <small>{{ 'NAVI.CALENDAR'|trans }}</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'NAVI.MAIN'|trans }}</a></li>
+                <li class="active">{{ 'NAVI.CALENDAR'|trans }}</li>
             </ol>
         </section>
 
@@ -53,10 +53,12 @@
                 integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
                 crossorigin="anonymous"></script>
 
+
+
         <!-- fullCalendar 2.2.5 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-        <script src="{{ asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
-
+        <script src="{{ asset('plugins/fullcalendar/new/fullcalendar.min.js') }}"></script>
+        <script src="{{ asset('plugins/fullcalendar/locale/lt.js') }}"></script>
         <!-- Main content -->
         <section class="content">
             {{ include('admin/calendar/content.html.twig') }}
@@ -82,12 +84,7 @@
 
 
 
-<!-- jQuery UI 1.11.4 -->
 
-<script
-        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-        crossorigin="anonymous"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
@@ -101,19 +98,6 @@
 <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
-
-<script>
-
-    // !!!!!!!!!!!!!!!!!!
-
-    /*
-    $('tr[data-href]').on("click", function() {
-        document.location = $(this).data('href');
-    });
-    */
-</script>
-
-
 
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/app.min.js') }}"></script>

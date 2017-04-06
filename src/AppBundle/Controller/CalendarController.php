@@ -94,7 +94,7 @@ class CalendarController extends Controller
 
         $form = $this->createForm(CalendarType::class, $calendar)
             ->add('save', SubmitType::class, [
-                'label' => 'Prideti',
+                'label' => 'Pridėti',
                 'attr' => [
                     'class' => 'btn btn-default'
             ]
@@ -138,7 +138,7 @@ class CalendarController extends Controller
 
         return $this->render('admin/calendar/actions/calendar_add.html.twig', [
             'form' => $form->createView(),
-            'user_roles' => $this->getUser() ? $this->getUser()->getRoles() : null,
+            'edit' => false
         ]);
 
         }
@@ -153,7 +153,7 @@ class CalendarController extends Controller
     /**
      * @param Request $request
      * @param Calendar $calendar
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route("/edit/{calendar}", name="calendar_edit")
      */
     public function editAction(Request $request, Calendar $calendar)
@@ -174,14 +174,11 @@ class CalendarController extends Controller
 
         return $this->render('admin/calendar/actions/calendar_add.html.twig', [
             'form' => $form->createView(),
-            'calendar' => $calendar
+            'calendar' => $calendar,
+            'edit' => true
         ]);
-
         }
-
         return $this->redirectToRoute('homepage');
-
-
     }
 
     /**
@@ -206,63 +203,31 @@ class CalendarController extends Controller
                 $em->flush();
 
             return new JsonResponse([
-                'data' => $params
+                'data' => $params,
+                'edit' => true
             ]);
         }
-
         return new Response('Error!', 400);
-
         }
-
         return $this->redirectToRoute('homepage');
-
-
-
     }
 
     /**
-     * @Route("/test", name="test")
+     * @param Calendar $calendar
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/delete/{calendar}", name="calendar_delete")
      */
-    public function testAction()
+    public function deleteAction(Calendar $calendar)
     {
-/*
-        $repo = $this->getDoctrine()->getRepository('AppBundle:Calendar');
-        $data = $repo->find(15);
+        if ($this->isGranted('ROLE_ADMIN', null)){
 
-        $day = clone $data->getStart();
-        $day->modify('+'.$bla.'day');
-*/
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($calendar);
+            $em->flush();
 
-
-
-        $repo = $this->getDoctrine()->getRepository('AppBundle:Calendar');
-        $data = $repo->find(15);
-
-        $savaite = 4;
-            $day = clone $data->getStart();
-
-        for($i = 0; $i<=$savaite; $i++)
-        {
-            $day = clone $day;
-
-            $day->modify('+1week');
-
-            dump($day);
+           return $this->redirectToRoute('calendar');
         }
-
-
-
-
-
-
-
-
-
-        dump($data->getStart()->format('c'));
-
-        return new Response;
+        return $this->redirectToRoute('homepage');
     }
-
-
 
 }

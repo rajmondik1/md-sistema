@@ -37,9 +37,18 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                asdf
-            </h1>
+                {{ edit ? 'STUDENT.EDIT.TRUE'|trans : 'STUDENT.EDIT.FALSE'|trans }}
+                <br>
 
+                <small>{{ 'CPANEL'|trans }}</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'NAVI.MAIN'|trans }}</a></li>
+                <li>{{ 'NAVI.STUDENT'|trans }}</li>
+                <li class="active">
+                    {{ edit ? 'STUDENT.EDIT.TRUE'|trans : 'STUDENT.EDIT.FALSE'|trans }}
+                </li>
+            </ol>
         </section>
 
         <!-- Main content -->
@@ -68,6 +77,9 @@
 
                                     <div class="form-group">
                                         {{ form_row(form.gimdata, { 'label' : 'FORM.BIRTH'|trans }) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_row(form.email, { 'label' : 'FORM.EMAIL'|trans }) }}
                                     </div>
                                     <div class="form-group">
                                         {{ form_row(form.mokslometai, { 'label' : 'FORM.USER.MOKSLOMETAI'|trans }) }}

@@ -69,10 +69,11 @@
             /* initialize the calendar
              -----------------------------------------------------------------*/
             $('#calendar').fullCalendar({
+                locale: 'lt',
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: ''
+                    right: 'day,week,month'
                 },
                 editable: true, //
                 navLinks: true, // can click day/week names to navigate views

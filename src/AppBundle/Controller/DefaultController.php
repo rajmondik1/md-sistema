@@ -15,6 +15,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+
         $us = $this->getDoctrine()->getRepository('AppBundle:User')->stats();
         $st = $this->getDoctrine()->getRepository('AppBundle:Student')->stats();
         $tch = $this->getDoctrine()->getRepository('AppBundle:Teacher')->stats();

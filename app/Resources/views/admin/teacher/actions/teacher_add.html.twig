@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    {{ include('admin/admin_title.html.twig') }}
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -37,9 +35,18 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
+                {{ edit ? 'TEACHER.EDIT.TRUE'|trans : 'TEACHER.EDIT.FALSE'|trans }}
+                <br>
 
+                <small>{{ 'CPANEL'|trans }}</small>
             </h1>
-
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'NAVI.MAIN'|trans }}</a></li>
+                <li>{{ 'NAVI.TEACHER'|trans }}</li>
+                <li class="active">
+                    {{ edit ? 'TEACHER.EDIT.TRUE'|trans : 'TEACHER.EDIT.FALSE'|trans }}
+                </li>
+            </ol>
         </section>
 
         <!-- Main content -->
