@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Calendar;
 use AppBundle\Entity\Programa;
 use AppBundle\Form\ProgramaType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -88,12 +89,15 @@ class ProgramaController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/delete/{programa}", name="programa_delete")
      */
-    public function deleteAction(Request $request, Programa $programa)
+    public function deleteAction(Programa $programa)
     {
         if ($this->isGranted('ROLE_ADMIN', null)) {
 
         $em = $this->getDoctrine()->getManager();
+
+
         $em->remove($programa);
+
         $em->flush();
 
 

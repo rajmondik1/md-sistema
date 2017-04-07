@@ -1,3 +1,4 @@
+{% trans_default_domain "messages" %}
 <header class="main-header">
     <!-- Logo -->
     <a href="{{ path('homepage') }}" class="logo">
@@ -38,9 +39,9 @@
                                 <br>
                                 <small>
                                 {%  if 'ROLE_ADMIN' in app.user.roles %}
-                                    Administatorius
+                                    {{ 'APP.ADMIN'|trans }}
                                 {% else %}
-                                    Vartotojas
+                                    {{ 'APP.USER'|trans }}
                                 {% endif %}
                                 </small>
                             </p>
@@ -50,10 +51,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default btn-flat">{{ 'APP.PROFILE'|trans }}</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">{{ 'APP.LOGOUT'|trans }}</a>
                             </div>
                         </li>
                     </ul>
@@ -74,7 +75,7 @@
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header">{{ 'NAVI.MAIN_NAVI'|trans }}</li>
 
             <li>
                 <a href="{{ path('programa_index') }}">

@@ -32,6 +32,13 @@
                 </td>
                 </div>
 
+                <div>
+
+                </div>
+                <br>
+<hr>
+                <h3>{{ 'NAVI.STUDENT'|trans }}</h3>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -42,7 +49,7 @@
                     </thead>
                     <tbody>
                     {% for student in programa.student %}
-                        <tr>
+                        <tr data-href="{{ path('student_info', {student: student.id}) }}">
                             <td>{{ student.name|e }}</td>
                             <td>{{ student.surname|e }}</td>
                         </tr>

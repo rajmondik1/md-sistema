@@ -43,37 +43,7 @@ class CalendarType extends AbstractType
                     'style' => 'width:100%'
                 ]
             ])
-            ->add('repeat', ChoiceType::class, [
-                'choices' => [
-                    'FORM.CALENDAR.MONTH' => 'month',
-                    'FORM.CALENDAR.WEEK' => 'week',
-                    'FORM.CALENDAR.DAY' => 'day'
-                ],
-                'mapped' => false,
-                'attr' => [
-                    'class' => 'form-control select2',
-                    'style' => 'width:100%'
 
-                ]
-            ])
-            ->add('hm', ChoiceType::class, [
-                'attr' => [
-                    'class' => 'form-control select2',
-                    'style' => 'width:100%'
-                ],
-                'choices' => [
-                    '1' => '1',
-                    '2' => '3',
-                    '4' => '4',
-                    '5' => '5',
-                    '6' => '6',
-                    '7' => '7',
-                    '8' => '8',
-                    '9' => '9',
-                    '10' => '10',
-                ],
-                'mapped' => false
-            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Išsaugoti',
                 'attr' => [

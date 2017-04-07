@@ -67,7 +67,7 @@
                     <span>{{ 'BUTTON.DELETE'|trans }}</span>
                 </a>
                 <a class="yesBtn btn btn-success"
-                   href="">
+                   href="{{ path('student_delete', {student: student.id}) }}">
                     {{ 'BUTTON.YES'|trans }}
                 </a>
                 <a class="noBtn btn btn-danger">

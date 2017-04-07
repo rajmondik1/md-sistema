@@ -7,6 +7,7 @@ use AppBundle\Form\CalendarType;
 use Doctrine\ORM\Mapping\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,12 +94,45 @@ class CalendarController extends Controller
            // $calendar->setEnd(new \DateTime());
 
         $form = $this->createForm(CalendarType::class, $calendar)
+            ->add('repeat', ChoiceType::class, [
+                'choices' => [
+                    'FORM.CALENDAR.DAY' => 'day',
+                    'FORM.CALENDAR.MONTH' => 'month',
+                    'FORM.CALENDAR.WEEK' => 'week'
+                ],
+                'mapped' => false,
+                'attr' => [
+                    'class' => 'form-control select2',
+                    'style' => 'width:100%'
+                ],
+                'label' => 'FORM.CALENDAR.REPEAT'
+            ])
+            ->add('hm', ChoiceType::class, [
+                'attr' => [
+                    'class' => 'form-control select2',
+                    'style' => 'width:100%'
+                ],
+                'choices' => [
+                    '1' => '1',
+                    '2' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                ],
+                'mapped' => false,
+                'label' => 'FORM.CALENDAR.HM'
+            ])
             ->add('save', SubmitType::class, [
-                'label' => 'Pridėti',
+                'label' => 'FORM.ADD',
                 'attr' => [
                     'class' => 'btn btn-default'
-            ]
-            ]);
+                ]
+            ])
+        ;
 
         $form->handleRequest($request);
 
@@ -172,7 +206,7 @@ class CalendarController extends Controller
             return $this->redirectToRoute('calendar');
         }
 
-        return $this->render('admin/calendar/actions/calendar_add.html.twig', [
+        return $this->render('admin/calendar/actions/calendar_edit.html.twig', [
             'form' => $form->createView(),
             'calendar' => $calendar,
             'edit' => true

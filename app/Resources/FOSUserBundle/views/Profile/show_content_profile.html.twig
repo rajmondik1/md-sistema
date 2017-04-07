@@ -1,4 +1,4 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% trans_default_domain "messages" %}
 
 <!-- Main row -->
 <div class="row">
@@ -6,33 +6,34 @@
 
         <div class="box">
             <div class="box-header">
-                <h3><a href="{{ path('programa_add') }}">prideti programa</a></h3>
-                <h3 class="box-title">Hover Data Table</h3>
+                <h3 class="box-title">{{ 'NAVI.PROFILE'|trans }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <table class="table table-user-information">
                     <tbody>
                     <tr>
-                        <td>{{ 'profile.show.name'|trans }}</td>
+                        <td>{{ 'FORM.NAME'|trans }}</td>
                         <td>{{ user.name }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'profile.show.surname'|trans }}</td>
+                        <td>{{ 'FORM.SURNAME'|trans }}</td>
                         <td>{{ user.surname }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'profile.show.username'|trans }}</td>
+                        <td>{{ 'FORM.USERNAME'|trans }}</td>
                         <td>{{ user.username }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'profile.show.email'|trans }}</td>
+                        <td>{{ 'FORM.EMAIL'|trans }}</td>
                         <td>{{ user.email }}</td>
                     </tr>
 
                     </tbody>
                 </table>
-
+                <div>
+                <a class="btn btn-primary" href="{{ path('fos_user_change_password') }}">{{ 'BUTTON.CHANGE_PASS'|trans }}</a>
+                </div>
                 {#
                 /profile/change-password
                 #}

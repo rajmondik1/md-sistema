@@ -1,6 +1,14 @@
 {
+  "APP" : {
+    "ADMIN" : "Administatorius",
+    "USER" : "Vartotojas",
+    "PROFILE" : "Profilis",
+    "LOGOUT" : "Atsijungti"
+  },
   "NAVI" : {
     "MAIN" : "Pagrindinis",
+    "MAIN_NAVI" : "Pagrindinė navigacija",
+    "PROFILE" : "Profilis",
     "PROGRAMA" : "Programų sąrašas",
     "PROGRAMAINFO" : "Programos informacija",
     "USER" : "Sistemos naudotojai",
@@ -10,7 +18,8 @@
     "TEACHERINFO" : "Informacija apie mokytoją",
     "STUDENT" : "Mokiniai",
     "STUDENTINFO" : "Informacija apie mokinį",
-    "CALENDAR" : "Kalendorius"
+    "CALENDAR" : "Kalendorius",
+    "PASS_RESET" : "Slaptažodžio keitimas"
 
   },
 
@@ -33,10 +42,14 @@
     "DELETE" : "Ištrinti",
     "EDIT" : "Redaguoti",
     "YES" : "Taip",
-    "NO" : "Ne"
+    "NO" : "Ne",
+    "CHANGE_PASS" : "Pakeisti slaptažodį",
+    "MAKEADMIN" : "Padaryti administatoriu",
+    "MAKEUSER"  : "Padaryti naudotoju"
   },
 
   "FORM" : {
+    "IFADMIN" : "Vartotojo privilėgijos",
     "OR" : "arba",
     "REGISTER" : {
       "START" : "Naujo naudotojo registracija",
@@ -71,7 +84,7 @@
       "ASMK" : "Asmens kodas",
       "SCHOOL" : "Mokykla",
       "TEVTELEF" : "Tėvų telefono numeris",
-      "PARENTINFO" : "Informacija apie tėvus",
+      "PARENTINFO" : "Pastabos",
       "BAIGIMONR" : "Baigimo atestato numeris"
     },
     "EDIT" : "Išsaugoti",
@@ -100,7 +113,8 @@
     "EDIT" : {
       "TRUE" : "Mokytojo redagavimas",
       "FALSE" : "Naujo mokytojo pridėjimas"
-    }
+    },
+    "ALERT" : "Dėmesio! Norint ištrinti mokytoją, jis neturi buti priskirtas prie mokymo programos!"
   },
   "STUDENT" : {
     "EDIT" : {

@@ -33,6 +33,16 @@
                         <td>{{ 'FORM.LASTLOGIN'|trans }}</td>
                         <td>{{ user.lastLogin is empty ? "" : user.lastLogin|date("Y-m-d H:m") }}</td>
                     </tr>
+                    <tr>
+                        {% if 'ROLE_ADMIN' in user.roles %}
+                            <td>{{ 'FORM.IFADMIN'|trans }}</td>
+                            <td>{{ 'APP.ADMIN'|trans }}</td>
+                            <td></td>
+                        {% else %}
+                            <td>{{ 'FORM.IFADMIN'|trans }}</td>
+                            <td>{{ 'APP.USER'|trans }}</td>
+                        {% endif %}
+                    </tr>
                     </tbody>
                 </table>
             <div class="panel-footer">
@@ -50,10 +60,24 @@
                     <a href="{{ path('user_edit', {user: user.id}) }}" class="btn btn-warning">
                         {{ 'BUTTON.EDIT'|trans }}
                     </a>
+
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+
+                    {% if 'ROLE_ADMIN' in user.roles %}
+                        <a class="btn btn-warning"
+                            href="{{ path('demote_user', {user: user.id} ) }}">
+                            {{ 'BUTTON.MAKEUSER'|trans }}
+                        </a>
+                        {% else %}
+                        <a class="btn btn-warning"
+                           href="{{ path('promote_user', {user: user.id} ) }}">
+                            {{ 'BUTTON.MAKEADMIN'|trans }}
+                        </a>
+                    {% endif %}
+                    {% endif %}
                 </td>
 
             </div>
-
             </div>
     </section>
 </div>

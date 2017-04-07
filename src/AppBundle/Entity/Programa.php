@@ -41,16 +41,11 @@ class Programa
     private $student;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Calendar", mappedBy="events")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Calendar", mappedBy="events", orphanRemoval=true)
      * @ORM\JoinTable(name="programa_calendar")
      */
     private $events;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Mokslometai", mappedBy="metai")
-     * @ORM\JoinTable(name="programa_metai")
-     */
-    private $metai;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Teacher", inversedBy="teacher")
@@ -207,29 +202,6 @@ class Programa
         return $this->pavadinimas;
     }
 
-    /**
-     * Add metai
-     *
-     * @param \AppBundle\Entity\Mokslometai $metai
-     *
-     * @return Programa
-     */
-    public function addMetai(\AppBundle\Entity\Mokslometai $metai)
-    {
-        $this->metai[] = $metai;
-
-        return $this;
-    }
-
-    /**
-     * Remove metai
-     *
-     * @param \AppBundle\Entity\Mokslometai $metai
-     */
-    public function removeMetai(\AppBundle\Entity\Mokslometai $metai)
-    {
-        $this->metai->removeElement($metai);
-    }
 
     /**
      * Get metai
@@ -265,29 +237,6 @@ class Programa
         return $this->teacher;
     }
 
-    /**
-     * Set pteacher
-     *
-     * @param \AppBundle\Entity\Teacher $pteacher
-     *
-     * @return Programa
-     */
-    public function setPteacher(\AppBundle\Entity\Teacher $pteacher = null)
-    {
-        $this->pteacher = $pteacher;
-
-        return $this;
-    }
-
-    /**
-     * Get pteacher
-     *
-     * @return \AppBundle\Entity\Teacher
-     */
-    public function getPteacher()
-    {
-        return $this->pteacher;
-    }
 
     /**
      * Add student
@@ -322,4 +271,6 @@ class Programa
     {
         return $this->student;
     }
+
+
 }

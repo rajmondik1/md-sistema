@@ -233,4 +233,9 @@ class Teacher
     {
         return $this->surname;
     }
+
+    public function namesurname()
+    {
+        return $this->name." ".$this->surname;
+    }
 }

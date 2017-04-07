@@ -18,4 +18,12 @@ class ProgramaRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
 
+    /*
+    public function remevent()
+    {
+        $qb = $this->createQueryBuilder('programa');
+        $qb->select('programa.id')
+            ->where('programa.id = calendar.events')
+    }
+    */
 }

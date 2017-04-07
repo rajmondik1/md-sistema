@@ -99,6 +99,23 @@ class StudentController extends Controller
     }
 
     /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/delete/{student}", name="student_delete")
+     */
+    public function deleteAction(Student $student)
+    {
+        if ($this->isGranted('ROLE_ADMIN', null))
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($student);
+            $em->flush();
+
+            return $this->redirectToRoute('student_index');
+        }
+        return $this->redirectToRoute('homepage');
+    }
+
+    /**
      * @param Student $student
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/{student}", name="student_info")
