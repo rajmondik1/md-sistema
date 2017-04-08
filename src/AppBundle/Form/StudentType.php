@@ -86,6 +86,7 @@ class StudentType extends AbstractType
 
             ])
             ->add('baigimonr', TextType::class, [
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]

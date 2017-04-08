@@ -94,14 +94,14 @@ class Student
     /**
      * @var int
      *
-     * @ORM\Column(name="mokslometai", type="integer")
+     * @ORM\Column(name="mokslometai", type="integer", nullable=true)
      */
     private $mokslometai;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="baigimonr", type="string", length=255)
+     * @ORM\Column(name="baigimonr", type="string", length=255, nullable=true)
      */
     private $baigimonr;
 

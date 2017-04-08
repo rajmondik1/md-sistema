@@ -16,6 +16,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
+        if ($this->isGranted('ROLE_ADMIN', null)){
         $us = $this->getDoctrine()->getRepository('AppBundle:User')->stats();
         $st = $this->getDoctrine()->getRepository('AppBundle:Student')->stats();
         $tch = $this->getDoctrine()->getRepository('AppBundle:Teacher')->stats();
@@ -34,5 +35,8 @@ class DefaultController extends Controller
             'st' => $st,
             'cal' => $cal
         ]);
+
+        }
+        return $this->redirectToRoute('fos_user_security_login');
     }
 }

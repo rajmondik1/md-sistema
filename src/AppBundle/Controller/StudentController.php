@@ -17,17 +17,21 @@ use Symfony\Component\HttpFoundation\Request;
 class StudentController extends Controller
 {
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/", name="student_index")
      */
     public function indexAction()
     {
+        if($this->isGranted('ROLE_ADMIN', null)){
 
         $student = $this->getDoctrine()->getRepository('AppBundle:Student')->findAll();
 
         return $this->render(':admin/student:index.html.twig', [
             'student' => $student
         ]);
+        }
+        return $this->redirectToRoute('homepage');
+
     }
 
     /**
