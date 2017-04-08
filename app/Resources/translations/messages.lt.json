@@ -29,7 +29,7 @@
     "STUDENT": "Mokinių",
     "TEACHER" : "Mokytojų",
     "MOREINFO" : "Peržiūrėti",
-    "CALENDAR" : "Užsiemimų",
+    "CALENDAR" : "Užsiėmimų",
     "FASTNAV" : "Greita navigacija"
   },
 
@@ -37,7 +37,8 @@
     "ADD" : {
       "TEACHER" : "Pridėti dėstytoją",
       "STUDENT" : "Pridėti mokinį",
-      "EVENT" : "Pridėti užsiemimą"
+      "EVENT" : "Pridėti užsiėmimą",
+      "PROGRAMA" : "Pridėti programą"
     },
     "DELETE" : "Ištrinti",
     "EDIT" : "Redaguoti",
@@ -134,7 +135,7 @@
       "NAME" : "Mokinio vardas",
       "SURNAME" : "Mokinio pavardė"
     },
-    "EVENTS" : "Artimiausi užsiemimai"
+    "EVENTS" : "Artimiausi užsiėmimai"
   }
 
 }

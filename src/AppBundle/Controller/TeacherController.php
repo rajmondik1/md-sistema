@@ -2,8 +2,10 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Programa;
 use AppBundle\Entity\Teacher;
 use AppBundle\Form\TeacherType;
+use Doctrine\Common\Collections\Criteria;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -80,14 +82,13 @@ class TeacherController extends Controller
      * @Route("/delete/{teacher}", name="teacher_delete")
      */
 
-    public function deleteAction(Request $request, Teacher $teacher)
+    public function deleteAction(Teacher $teacher)
     {
         if ($this->isGranted('ROLE_ADMIN', null))
         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($teacher);
             $em->flush();
-
             return $this->redirectToRoute('teacher_index');
         }
 

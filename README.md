@@ -1,4 +1,4 @@
-.checkout
-=========
+Neformaliojo ugdymo administravimo sistema
+===========================================
 
-A Symfony project created on December 5, 2016, 3:59 pm.
+Ši sistema yra sukurta norint palengvinti administracijos darbą

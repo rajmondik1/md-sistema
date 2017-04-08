@@ -74,14 +74,14 @@
 
 {% if calendar.start|date('Y:m:d') == calendar.end|date('Y:m:d') %}
     <h5>
-    {{ calendar.start | date('Y-m-d H:m') }}
+    {{ calendar.start | date('Y-m-d H:i') }}
     -
-    {{ calendar.end | date('H:m') }}
+    {{ calendar.end | date('H:i') }}
     </h5>
     {% else %}
                     <h5>
-                        {{ calendar.start | date('Y:m:d H:m') }}
-                        {{ calendar.end | date('Y:m:d H:m') }}
+                        {{ calendar.start | date('Y:m:d H:i') }}
+                        {{ calendar.end | date('Y:m:d H:i') }}
                     </h5>
 
 {% endif %}

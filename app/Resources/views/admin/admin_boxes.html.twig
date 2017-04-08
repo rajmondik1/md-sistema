@@ -108,9 +108,10 @@
 
                     <div class="btn-group-vertical" style="width: 100%" role="group">
 
-                        <a href="" type="button" class="btn btn-warning">{{ 'BUTTON.ADD.TEACHER'|trans }}</a>
-                        <a href="" type="button" class="btn btn-warning">{{ 'BUTTON.ADD.STUDENT'|trans }}</a>
-                        <a href="" type="button" class="btn btn-warning">{{ 'BUTTON.ADD.EVENT'|trans }}</a>
+                        <a href="{{ path('teacher_add') }}" type="button" class="btn btn-warning">{{ 'BUTTON.ADD.TEACHER'|trans }}</a>
+                        <a href="{{ path('student_add') }}" type="button" class="btn btn-warning">{{ 'BUTTON.ADD.STUDENT'|trans }}</a>
+                        <a href="{{ path('calendar_add') }}" type="button" class="btn btn-warning">{{ 'BUTTON.ADD.EVENT'|trans }}</a>
+                        <a href="{{ path('programa_add') }}" type="button" class="btn btn-warning">{{ 'BUTTON.ADD.PROGRAMA'|trans }}</a>
 
                     </div>
 

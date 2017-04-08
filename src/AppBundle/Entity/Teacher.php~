@@ -58,7 +58,7 @@ class Teacher
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Programa", mappedBy="teacher")
-     * @ORM\JoinTable(name="programa_teacher")
+     * @ORM\JoinColumn(name="programa_teacher", onDelete="SET NULL")
 
      */
     private $teacher;
